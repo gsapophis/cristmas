@@ -11,6 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151212143028) do
+
+  create_table "kids", force: :cascade do |t|
+    t.integer  "status",     limit: 4, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "kids", ["status"], name: "index_kids_on_status", using: :btree
+
+  create_table "user_kids", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "kid_id",     limit: 4
+    t.integer  "status",     limit: 4, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "user_kids", ["kid_id"], name: "index_user_kids_on_kid_id", using: :btree
+  add_index "user_kids", ["status"], name: "index_user_kids_on_status", using: :btree
+  add_index "user_kids", ["user_id"], name: "index_user_kids_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "volonter_kids", force: :cascade do |t|
+    t.integer  "volonter_id", limit: 4
+    t.integer  "kid_id",      limit: 4
+    t.integer  "status",      limit: 4, default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "volonter_kids", ["kid_id"], name: "index_volonter_kids_on_kid_id", using: :btree
+  add_index "volonter_kids", ["status"], name: "index_volonter_kids_on_status", using: :btree
+  add_index "volonter_kids", ["volonter_id"], name: "index_volonter_kids_on_volonter_id", using: :btree
+
+  create_table "volonters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

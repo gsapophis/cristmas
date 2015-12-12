@@ -15,4 +15,4 @@
 //= require device
 //= require jquery.nicescroll.min
 //= require jquery.popup
-//= require jquery.main
+//= require jquery.inner

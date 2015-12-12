@@ -34,5 +34,7 @@ module GoodDeal
     config.api_only = false
     config.active_record.raise_in_transactional_callbacks = true
     config.action_mailer.raise_delivery_errors = false
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.serve_static_files
   end
 end

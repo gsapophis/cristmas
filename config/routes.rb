@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :sessions
       resources :kids do
         get 'all', on: :collection
+        post 'deliver', on: :member
       end
     end
   end

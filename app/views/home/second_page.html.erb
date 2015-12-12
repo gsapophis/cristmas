@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoodDeal</title>
+  <style>
+    .preloader{
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 3;
+    }
+    .preloader:after,
+    .preloader:before{
+      z-index: 1;
+      position: absolute;
+      background: #fff;
+      content: '';
+      width: 51%;
+      top: 0;
+      bottom: 0;
+      -webkit-transition: width 500ms ease-in-out;
+      transition: width 500ms ease-in-out;
+    }
+    .preloader:after{
+      left: 0;
+    }
+    .preloader:before{
+      right: 0;
+    }
+    .preloader_loaded:after,
+    .preloader_loaded:before{
+      width: 0;
+    }
+    .preloader > div {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 200px;
+      height: 200px;
+      margin: -100px 0 0 -100px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      z-index: 2;
+      -webkit-transition: opacity 500ms ease-in-out;
+      transition: opacity 500ms ease-in-out;
+    }
+
+    .preloader_loaded > div {
+      opacity: 0;
+    }
+
+    .preloader > div canvas {
+      top: -2px;
+      left: -2px;
+      position: relative;
+    }
+
+    .preloader > img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -30px 0 0 -52px;
+      z-index: 3;
+      -webkit-transition: opacity 500ms ease-in-out;
+      transition: opacity 500ms ease-in-out;
+    }
+    .preloader_loaded > img,
+    .preloader_loaded > div{
+      opacity: 0;
+    }
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @keyframes  spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes spin-reverse {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(-360deg);
+      }
+    }
+    @keyframes  spin-reverse {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+  </style>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application2', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <!-- site -->
+  <div class="site site_inner">
+
+    <!-- site__header -->
+    <header class="site__header">
+      <!-- site__header-wrap -->
+      <div class="site__header-wrap">
+
+        <!-- site__header-inner -->
+        <div class="site__header-inner">
+
+          <!-- logo -->
+          <h1 class="logo">
+            <img src="http://ergonomic/img/logo.png" alt="ergonomic"/>
+          </h1>
+          <!-- /logo -->
+
+        </div>
+        <!-- /site__header-inner -->
+
+      </div>
+      <!-- /site__header-wrap -->
+    </header>
+    <!-- /site__header -->
+
+    <!-- site__content -->
+    <div class="site__content">
+
+      <!-- site__foter -->
+      <footer class="site__foter">
+
+      </footer>
+      <!-- /site__foter -->
+    </div>
+    <!-- /site__content -->
+
+  </div>
+  <!-- /site -->
+
+  <!-- preloader -->
+  <div class="preloader">
+    <div></div>
+    <img src="http://ergonomic/img/preloader-logo.png" alt="Preloader" width="104" height="60"/>
+  </div>
+  <!-- /preloader -->
+
+</body>
+</html>

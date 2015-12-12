@@ -8,6 +8,7 @@ class API::V1::KidsController < API::BaseController
   end
 
   def create
+    require_all_params
     @kid = current_user.kids.create permitted_params
     respond_with @kid, status: :created, current_user: current_user, location: api_v1_kids_url(@kid)
   end
@@ -16,9 +17,10 @@ class API::V1::KidsController < API::BaseController
     respond_with resource
   end
 
-  def deliver
+  def delivered
+    require_video
     @kid = resource
-    @kid.deliver!
+    @kid.delivered!(permitted_params[:video])
     respond_with @kid, status: 200
   end
 
@@ -29,7 +31,19 @@ class API::V1::KidsController < API::BaseController
 
   private
   def resource
-    current_user.kids.find(parms[:id])
+    current_user.kids.find(params[:id])
+  end
+
+  def require_video
+    permitted_params.require :video
+  end
+
+  def require_all_params
+    permitted_params.require :name
+    permitted_params.require :address
+    permitted_params.require :age
+    permitted_params.require :video
+    permitted_params.require :description
   end
 
   def permitted_params

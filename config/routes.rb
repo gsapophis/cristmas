@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :sessions
       resources :kids do
         get 'all', on: :collection
-        post 'deliver', on: :member
+        post 'delivered', on: :member
       end
     end
   end
@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :kids do
-    put 'add_to_favorite', on: :collection
+    put 'add_to_pending', on: :collection
+    put 'accept_sending', on: :member
+    delete 'remove_from_list', on: :member
   end
-  resources :user_kids
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

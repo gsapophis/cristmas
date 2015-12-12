@@ -4,13 +4,25 @@ class KidsController < ApplicationController
   def index
   end
 
-  def add_to_favorite
-    current_user.add_to_faworite(params[:kid_id])
+  def add_to_pending
+    unscoped_resource.add_to_pending(current_user.id)
+  end
+
+  def accept_sending
+    resource.accept_sending
+  end
+
+  def remove_from_list
+    resource.remove_from_list
   end
 
   protected
   def resource
     @kid = current_user.kids.find(params[:id])
+  end
+
+  def unscoped_resource
+    @kid = Kid.find(params[:id])
   end
 
   def collection

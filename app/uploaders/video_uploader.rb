@@ -14,6 +14,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   process encode_video: [:mp4]
+  process :save_video_duration
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -23,11 +24,8 @@ class VideoUploader < CarrierWave::Uploader::Base
     process :encode_video => [:mp4]
   end
 
-  # version :ogv, :from_version => :mp4 do
-  #   process :encode_ogv => [{ callbacks: { after_transcode: :set_success }  }]
-  # end
-  #
-  # version :ogg, :from_version => :mp4 do
-  #   process :encode_ogv => [{ callbacks: { after_transcode: :set_success } }]
-  # end
+  def save_video_duration
+    video = FFMPEG::Movie.new(file.file).duration
+    model.video_duration = video
+  end
 end

@@ -11,14 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212143028) do
+ActiveRecord::Schema.define(version: 20151212145640) do
 
   create_table "kids", force: :cascade do |t|
-    t.integer  "status",     limit: 4, default: 0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "status",      limit: 4,     default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "name",        limit: 255
+    t.string   "address",     limit: 255
+    t.integer  "age",         limit: 4
+    t.string   "video",       limit: 255
+    t.text     "description", limit: 65535
   end
 
+  add_index "kids", ["address"], name: "index_kids_on_address", using: :btree
+  add_index "kids", ["age"], name: "index_kids_on_age", using: :btree
+  add_index "kids", ["name"], name: "index_kids_on_name", using: :btree
   add_index "kids", ["status"], name: "index_kids_on_status", using: :btree
 
   create_table "user_kids", force: :cascade do |t|
@@ -34,9 +42,22 @@ ActiveRecord::Schema.define(version: 20151212143028) do
   add_index "user_kids", ["user_id"], name: "index_user_kids_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "volonter_kids", force: :cascade do |t|
     t.integer  "volonter_id", limit: 4
@@ -51,8 +72,21 @@ ActiveRecord::Schema.define(version: 20151212143028) do
   add_index "volonter_kids", ["volonter_id"], name: "index_volonter_kids_on_volonter_id", using: :btree
 
   create_table "volonters", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
+
+  add_index "volonters", ["email"], name: "index_volonters_on_email", unique: true, using: :btree
+  add_index "volonters", ["reset_password_token"], name: "index_volonters_on_reset_password_token", unique: true, using: :btree
 
 end

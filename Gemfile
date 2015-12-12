@@ -20,6 +20,13 @@ gem 'kaminari'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
+gem 'devise'
+
+gem 'koala', '~> 2.0'
+gem 'inherited_resources'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug'

@@ -16,7 +16,6 @@ class KidsController < ApplicationController
   end
 
   def personal_page
-
   end
 
   protected

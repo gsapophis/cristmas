@@ -5,9 +5,7 @@ class VolonterKid < ActiveRecord::Base
 
   enum status: [:pending_approval, :received] unless instance_methods.include? :status
 
-  mount_uploader :video, VideoUploader
+  scope :kids_by_volonter, ->(id) { Kid.where(id: VolonterKid.find_by(volonter_id: id).try(:kid_id)) }
 
-  def self.kids_by_volonter(id)
-    Kid.where(id: VolonterKid.find_by(volonter_id: id).try(:kid_id))
-  end
+  mount_uploader :video, VideoUploader
 end

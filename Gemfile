@@ -11,6 +11,16 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'rails-api'
+gem 'roar-rails'
+gem 'roar-contrib'
+gem 'responders'
+gem 'kaminari'
+
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug'
 end

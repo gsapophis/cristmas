@@ -22,11 +22,7 @@
             _duration = 500,
             _canDraw = false,
             _header = $('.site__header'),
-            _headerSubTitle = _header.find('.site__header-title'),
-            _scrollIcon = _header.find('.site__header-scroll-icon'),
-            _headerHammer = null,
             _action = true,
-            _canScroll = false,
             _body = $('body');
 
         _preloaderCanvas.width = _preloaderCanvas.height = _preloaderWrap.width() + 4;
@@ -48,11 +44,7 @@
                         _showSite();
                     }
                 });
-                _scrollIcon.on({
-                    click: function () {
-                        _checkScroll(1);
-                    }
-                });
+
             },
             _addEventsOnLoad = function(){
                 _window.on({
@@ -60,15 +52,7 @@
                         var delta =  e.originalEvent.detail;
 
                         if( delta ){
-                            var direction = ( delta > 0 ) ? 1 : -1;
 
-                            if( !_action ){
-                                _checkScroll(direction);
-                            }
-
-                            if( _action || !_canScroll ){
-                                return false;
-                            }
                         }
 
                     },
@@ -76,40 +60,13 @@
                         var delta = e.originalEvent.wheelDelta;
 
                         if( delta ){
-                            var direction = ( delta > 0 ) ? -1 : 1;
 
-
-                            if( !_action ){
-                                _checkScroll(direction);
-                            }
-
-                            if( _action || !_canScroll ){
-                                return false;
-                            }
                         }
 
 
 
                     }
                 });
-            },
-            _checkScroll = function(direction){
-                if( direction > 0 && !_canScroll ){
-                    _hideHeader();
-                    _canScroll = true;
-                } else if(direction < 0 && _canScroll && ( _site.scrollTop() == 0 ) ){
-                    _showHeader();
-                    _canScroll = false;
-                }
-
-                if(direction > 0 && _header.hasClass('site__header_hidden') && !_header.hasClass('site__header_hidden_out')  && !_action ){
-                    _header.addClass('site__header_hidden_out');
-                }
-
-                if(direction < 0 && _header.hasClass('site__header_hidden_out') && !_action ){
-                    _header.removeClass('site__header_hidden_out');
-                }
-
             },
             _draw = function(time){
                 var fillPercent = ( time - _startAnimationTime )/_duration;
@@ -132,12 +89,6 @@
             },
             _init = function () {
                 _body[0].page = _self;
-
-                if(device.ios()){
-                    _site.niceScroll({
-                        horizrailenabled: false
-                    });
-                }
 
                 _addEvents();
 
@@ -174,7 +125,6 @@
                 //For css animation
                 setTimeout(function(){
                     _preloader.addClass('preloader_loaded');
-                    _headerSubTitle.addClass('site__header-title_loaded');
                     setTimeout(function(){
                         _action = false;
                         _preloader.remove();

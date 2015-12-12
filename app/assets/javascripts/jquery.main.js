@@ -194,8 +194,7 @@
         _init();
     };
 
-
-    var Cards = function (obj) {
+    var Cards = function ( obj ) {
 
         //private properties
         var _self = this,
@@ -234,7 +233,7 @@
                     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
                     dataType: 'json',
                     data: {
-                        loadedCount: _obj.find('li').length
+                        page: Math.floor( _obj.find('li').length / 6 )+1
                     },
                     timeout: 20000,
                     type: 'GET',
@@ -266,4 +265,5 @@
 
         _init();
     };
+
 } )();

@@ -61,6 +61,7 @@ html, body {
     transition: height 1000ms ease-in-out, transform 500ms ease-in-out;
     box-shadow: 0 0 7px rgba(0,0,0,.07);
 }
+.site_inner .site__header,
 .site__header_hidden {
     height: 146px;
 }

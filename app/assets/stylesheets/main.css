@@ -231,14 +231,86 @@ html, body {
     transition: top 1s ease-in-out;
 }
 .site__footer {
-    color: #898994;
+    height: 86px;
+    background: #110f08;
     font-family: "proximanova-thin", sans-serif;
     text-align: center;
 }
 .site__footer-wrap {
-    padding: 100px 30px 30px;
+    width: 1000px;
+    margin: 0 auto;
+    height: 86px;
+    position: relative;
 }
-/* --------------- /site --------------- */
+.footer__social a{
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(footer-social.png);
+    background-repeat: no-repeat;
+    opacity: .59;
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+}
+.footer__social a:hover {
+    opacity: 1;
+}
+.footer__social li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 13px;
+}
+.footer__social-f {
+    width: 7px;
+    height: 13px;
+    background-position: -5px -5px;
+}
+
+.footer__social-g {
+    width: 17px;
+    height: 14px;
+    background-position: -22px -5px;
+}
+
+.footer__social-in {
+    width: 14px;
+    height: 14px;
+    background-position: -49px -5px;
+}
+
+.footer__social-t {
+    width: 14px;
+    height: 12px;
+    background-position: -73px -5px;
+}
+.footer__logo {
+    position: absolute;
+    top: 18px;
+    left: 0;
+}
+.footer__copyright {
+    font-family: "calibrii", Sans-Serif;
+    color: #cbcbcb;
+    font-size: 12px;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+}
+.footer-l {
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+.footer__social {
+    text-align: center;
+    padding-top:21px;
+    font-size: 12px;
+    font-family: "calibrii", Sans-Serif;
+    color: #fff;
+}
+.footer__social > ul {
+    padding-top: 20px;
+}
+    /* --------------- /site --------------- */
 
 /* --------------- logo --------------- */
 .logo {

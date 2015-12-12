@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212220417) do
+ActiveRecord::Schema.define(version: 20151212222728) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.integer "volonter_id", limit: 4
@@ -37,24 +37,28 @@ ActiveRecord::Schema.define(version: 20151212220417) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
 
   create_table "kids", force: :cascade do |t|
-    t.integer  "status",         limit: 4,     default: 0
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.string   "name",           limit: 255
-    t.string   "address",        limit: 255
-    t.integer  "age",            limit: 4
-    t.string   "video",          limit: 255
-    t.text     "description",    limit: 65535
-    t.integer  "volonter_id",    limit: 4
-    t.integer  "user_id",        limit: 4
-    t.string   "feedback_video", limit: 255
+    t.integer  "status",                  limit: 4,     default: 0
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "name",                    limit: 255
+    t.string   "address",                 limit: 255
+    t.integer  "age",                     limit: 4
+    t.string   "video",                   limit: 255
+    t.text     "description",             limit: 65535
+    t.integer  "volonter_id",             limit: 4
+    t.integer  "user_id",                 limit: 4
+    t.string   "feedback_video",          limit: 255
+    t.string   "video_duration",          limit: 255
+    t.string   "feedback_video_duration", limit: 255
   end
 
   add_index "kids", ["address"], name: "index_kids_on_address", using: :btree
   add_index "kids", ["age"], name: "index_kids_on_age", using: :btree
+  add_index "kids", ["feedback_video_duration"], name: "index_kids_on_feedback_video_duration", using: :btree
   add_index "kids", ["name"], name: "index_kids_on_name", using: :btree
   add_index "kids", ["status"], name: "index_kids_on_status", using: :btree
   add_index "kids", ["user_id"], name: "index_kids_on_user_id", using: :btree
+  add_index "kids", ["video_duration"], name: "index_kids_on_video_duration", using: :btree
   add_index "kids", ["volonter_id"], name: "index_kids_on_volonter_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|

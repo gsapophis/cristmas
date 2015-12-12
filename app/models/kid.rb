@@ -8,7 +8,7 @@ class Kid < ActiveRecord::Base
   enum status: [:free, :in_list, :pending_approval, :delivered] unless instance_methods.include? :status
 
   mount_uploader :video, VideoUploader
-  mount_uploader :feedback_video, VideoUploader
+  mount_uploader :feedback_video, FeedbackVideoUploader
 
   def add_to_pending(id)
     self.update_columns(user_id: id, status: 1) unless self.user_id

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212165352) do
+ActiveRecord::Schema.define(version: 20151212195815) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.integer "volonter_id", limit: 4
@@ -45,12 +45,16 @@ ActiveRecord::Schema.define(version: 20151212165352) do
     t.integer  "age",         limit: 4
     t.string   "video",       limit: 255
     t.text     "description", limit: 65535
+    t.integer  "volonter_id", limit: 4
+    t.integer  "user_id",     limit: 4
   end
 
   add_index "kids", ["address"], name: "index_kids_on_address", using: :btree
   add_index "kids", ["age"], name: "index_kids_on_age", using: :btree
   add_index "kids", ["name"], name: "index_kids_on_name", using: :btree
   add_index "kids", ["status"], name: "index_kids_on_status", using: :btree
+  add_index "kids", ["user_id"], name: "index_kids_on_user_id", using: :btree
+  add_index "kids", ["volonter_id"], name: "index_kids_on_volonter_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "image",      limit: 255
@@ -72,18 +76,6 @@ ActiveRecord::Schema.define(version: 20151212165352) do
   add_index "user_authorizations", ["uid"], name: "index_user_authorizations_on_uid", using: :btree
   add_index "user_authorizations", ["user_id"], name: "index_user_authorizations_on_user_id", using: :btree
 
-  create_table "user_kids", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "kid_id",     limit: 4
-    t.integer  "status",     limit: 4, default: 0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
-
-  add_index "user_kids", ["kid_id"], name: "index_user_kids_on_kid_id", using: :btree
-  add_index "user_kids", ["status"], name: "index_user_kids_on_status", using: :btree
-  add_index "user_kids", ["user_id"], name: "index_user_kids_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
@@ -103,19 +95,6 @@ ActiveRecord::Schema.define(version: 20151212165352) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "volonter_kids", force: :cascade do |t|
-    t.integer  "volonter_id", limit: 4
-    t.integer  "kid_id",      limit: 4
-    t.integer  "status",      limit: 4,   default: 0
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "video",       limit: 255
-  end
-
-  add_index "volonter_kids", ["kid_id"], name: "index_volonter_kids_on_kid_id", using: :btree
-  add_index "volonter_kids", ["status"], name: "index_volonter_kids_on_status", using: :btree
-  add_index "volonter_kids", ["volonter_id"], name: "index_volonter_kids_on_volonter_id", using: :btree
 
   create_table "volonters", force: :cascade do |t|
     t.datetime "created_at",                                      null: false

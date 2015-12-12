@@ -3,13 +3,12 @@ class API::V1::KidsController < API::BaseController
   respond_to :json
 
   def index
-    @kids = VolonterKid.kids_by_volonter(current_user.id)
+    @kids = current_user.kids
     respond_with @kids.page(params[:page]).per(params[:per]), status: 200
   end
 
   def create
     @kid = current_user.kids.create permitted_params
-    @kid.volonter_kids.create volonter_id: current_user.id
     respond_with @kid, status: :created, current_user: current_user, location: api_v1_kids_url(@kid)
   end
 

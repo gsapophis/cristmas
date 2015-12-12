@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :validatable, :omniauthable,
          omniauth_providers: PROVIDERS
 
-  has_many :user_kids, dependent: :destroy
-  has_many :kids, through: :user_kids
+  has_many :kids
   has_one  :profile, dependent: :destroy
 
   delegate :image, to: :profile

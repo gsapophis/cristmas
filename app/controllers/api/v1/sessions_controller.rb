@@ -8,10 +8,10 @@ class API::V1::SessionsController < API::BaseController
 
   def create
     if resource && resource.valid_password?(params[:password])
-      if resource.confirmed_at
+      if resource
         success
       else
-        render json: { message: 'Confirm your email before continue' }, status: 401
+        render json: { message: resource.try(:errors).try(:messages) }, status: 401
       end
     else
       invalid_login_attempt
@@ -21,15 +21,14 @@ class API::V1::SessionsController < API::BaseController
   protected
 
   def resource
-    @resource ||= User.find_for_database_authentication(email: params[:email])
+    @resource ||= Volonter.find_for_database_authentication(email: params[:email])
   end
 
   def success
-    token = AccessToken.create!(user: resource)
+    token = AccessToken.create!(volonter: resource)
     render json: { auth_token: token.value.to_s,
                    success: true,
-                   email: resource.email,
-                   avatar_url: resource.avatar.url }, status: 200
+                   email: resource.email }, status: 200
   end
 
   def invalid_login_attempt

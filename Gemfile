@@ -27,8 +27,10 @@ gem 'inherited_resources'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-
+gem 'carrierwave-video'
 gem 'typus', github: 'typus/typus'
+gem 'carrierwave-video-thumbnailer'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'

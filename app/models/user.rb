@@ -7,4 +7,15 @@ class User < ActiveRecord::Base
 
   has_many :user_kids, dependent: :destroy
   has_many :kids, through: :user_kids
+  has_one  :profile, dependent: :destroy
+
+  delegate :image, to: :profile
+
+  after_create :build_profile_association
+
+  protected
+
+  def build_profile_association
+    self.create_profile unless self.profile
+  end
 end

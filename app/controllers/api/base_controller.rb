@@ -24,7 +24,7 @@ class API::BaseController < ActionController::API
 
     def find_user_by_token(token)
       token = AccessToken.where(value: token).first
-      token.user if token
+      token.volonter if token
     end
 
     def render_unauthorized
@@ -49,7 +49,7 @@ class API::BaseController < ActionController::API
   def cors_preflight_check
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-    headers['Access-Control-Allow-Headers'] = 'Accept, Content-Type, Authorization'
+    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     headers['Access-Control-Max-Age'] = '1728000'
 
     render nothing: true, content_type: 'application/json'

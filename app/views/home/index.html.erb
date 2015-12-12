@@ -1,289 +1,120 @@
+<!-- site -->
+<div class="site">
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="format-detection" content="address=no">
+  <!-- site__content -->
+  <div class="site__content">
 
-  <title>GD</title>
-  <style>
-    .preloader{
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      z-index: 3;
-    }
-    .preloader:after,
-    .preloader:before{
-      z-index: 1;
-      position: absolute;
-      background: #fff;
-      content: '';
-      width: 51%;
-      top: 0;
-      bottom: 0;
-      -webkit-transition: width 500ms ease-in-out;
-      transition: width 500ms ease-in-out;
-    }
-    .preloader:after{
-      left: 0;
-    }
-    .preloader:before{
-      right: 0;
-    }
-    .preloader_loaded:after,
-    .preloader_loaded:before{
-      width: 0;
-    }
-    .preloader > div {
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 200px;
-      height: 200px;
-      margin: -100px 0 0 -100px;
-      border-radius: 50%;
-      border: 1px solid #fff;
-      z-index: 2;
-      -webkit-transition: opacity 500ms ease-in-out;
-      transition: opacity 500ms ease-in-out;
-    }
+    <!-- cards -->
+    <div class="cards">
+      <ul>
+        <li>
 
-    .preloader_loaded > div {
-      opacity: 0;
-    }
+          <!-- card -->
+          <div class="card">
+          </div>
+          <!-- /card -->
 
-    .preloader > div canvas {
-      top: -2px;
-      left: -2px;
-      position: relative;
-    }
+        </li>
+        <li>
 
-    .preloader > img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      margin: -30px 0 0 -52px;
-      z-index: 3;
-      -webkit-transition: opacity 500ms ease-in-out;
-      transition: opacity 500ms ease-in-out;
-    }
-    .preloader_loaded > img,
-    .preloader_loaded > div{
-      opacity: 0;
-    }
-    @-webkit-keyframes spin {
-      0% {
-        -webkit-transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(360deg);
-      }
-    }
-    @keyframes  spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+          <!-- card -->
+          <div class="card">
+          </div>
+          <!-- /card -->
 
-    @-webkit-keyframes spin-reverse {
-      0% {
-        -webkit-transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(-360deg);
-      }
-    }
-    @keyframes  spin-reverse {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(-360deg);
-      }
-    }
-  </style>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
+        </li>
+        <li>
 
-</head>
-<body>
+          <!-- card -->
+          <div class="card">
+          </div>
+          <!-- /card -->
 
-  <!-- site__header -->
-  <header class="site__header">
+        </li>
+        <li>
 
-    <!-- site__header-wrap -->
-    <div class="site__header-wrap">
+          <!-- card -->
+          <div class="card">
+          </div>
+          <!-- /card -->
 
-      <!-- site__header-inner -->
-      <div class="site__header-inner">
+        </li>
+        <li>
 
-        <!-- logo -->
-        <h1 class="logo">
-          <img src="/assets/logo.png" alt="Good Deal"/>
+          <!-- card -->
+          <div class="card">
+          </div>
+          <!-- /card -->
 
-        </h1>
-        <!-- /logo -->
+        </li>
+        <li>
 
-        <!-- sign-in -->
-        <a href="#" class="sign-in">ВОЙТИ</a>
-        <!-- /sign-in -->
+          <!-- card -->
+          <div class="card">
+          </div>
+          <!-- /card -->
 
-      </div>
-      <!-- /site__header-inner -->
+        </li>
+      </ul>
+
+      <!-- cards__more -->
+      <form class="cards__more" action="api/v1/kids/all">
+
+        <!-- btn -->
+        <button class="btn">
+          Показать еще
+        </button>
+        <!-- /btn -->
+
+      </form>
+      <!-- /cards__more -->
+
+
 
     </div>
-    <!-- /site__header-wrap -->
+    <!-- /cards -->
 
-    <!-- site__header-title -->
-    <div class="site__header-title">
-      <div>
-        <div class="site__header-title-wrapp">
-          <h2>
-            Стань дедом морозом
-          </h2>
-          <p>Предсказывать будущее - на самом деле интересное занятие. Задумываясь о судьбах мира, пытаясь понять,
-            в каком направлении двигается развитие человечества, можно в полной мере проявить</p>
-        </div>
-      </div>
-      <!-- site__header-scroll-icon -->
-      <div class="site__header-scroll-icon"></div>
-      <!-- /site__header-scroll-icon -->
-    </div>
-    <!-- /site__header-title -->
+    <!-- site__footer -->
+    <footer class="site__footer">
 
-  </header>
-  <!-- /site__header -->
-
-  <!-- site -->
-  <div class="site">
-
-    <!-- site__content -->
-    <div class="site__content">
-
-      <!-- cards -->
-      <div class="cards">
-        <ul>
-          <li>
-
-            <!-- card -->
-            <div class="card">
-            </div>
-            <!-- /card -->
-
-          </li>
-          <li>
-
-            <!-- card -->
-            <div class="card">
-            </div>
-            <!-- /card -->
-
-          </li>
-          <li>
-
-            <!-- card -->
-            <div class="card">
-            </div>
-            <!-- /card -->
-
-          </li>
-          <li>
-
-            <!-- card -->
-            <div class="card">
-            </div>
-            <!-- /card -->
-
-          </li>
-          <li>
-
-            <!-- card -->
-            <div class="card">
-            </div>
-            <!-- /card -->
-
-          </li>
-          <li>
-
-            <!-- card -->
-            <div class="card">
-            </div>
-            <!-- /card -->
-
-          </li>
-        </ul>
-
-        <!-- cards__more -->
-        <form class="cards__more" action="api/v1/kids/all">
-
-          <!-- btn -->
-          <button class="btn">
-            Показать еще
-          </button>
-          <!-- /btn -->
-
-        </form>
-        <!-- /cards__more -->
-
-
+      <!-- site__footer-wrap -->
+      <div class="site__footer-wrap">
 
       </div>
-      <!-- /cards -->
+      <!-- /site__footer-wrap -->
 
-      <!-- site__footer -->
-      <footer class="site__footer">
-
-        <!-- site__footer-wrap -->
-        <div class="site__footer-wrap">
-
-        </div>
-        <!-- /site__footer-wrap -->
-
-      </footer>
-      <!-- /site__footer -->
-
-    </div>
-    <!-- /site__content -->
+    </footer>
+    <!-- /site__footer -->
 
   </div>
-  <!-- /site -->
+  <!-- /site__content -->
 
-  <!-- preloader -->
-  <div class="preloader">
-    <div></div>
-    <img src="/assets/logo_big.png" alt="Preloader" width="147" height="28"/>
-  </div>
-  <!-- /preloader -->
+</div>
+<!-- /site -->
 
-  <!-- popup -->
-  <div class="popup">
+<!-- preloader -->
+<div class="preloader">
+  <div></div>
+  <img src="/assets/logo_big.png" alt="Preloader" width="147" height="28"/>
+</div>
+<!-- /preloader -->
 
-    <!-- popup__wrap -->
-    <div class="popup__wrap">
+<!-- popup -->
+<div class="popup">
 
-      <!-- popup__content -->
-      <div class="popup__content popup__card">
+  <!-- popup__wrap -->
+  <div class="popup__wrap">
 
-
-      </div>
-      <!-- /popup__content -->
+    <!-- popup__content -->
+    <div class="popup__content popup__card">
 
 
     </div>
-    <!-- /popup__wrap -->
+    <!-- /popup__content -->
+
 
   </div>
-  <!-- /popup -->
+  <!-- /popup__wrap -->
 
-
-</body>
-</html>
+</div>
+<!-- /popup -->

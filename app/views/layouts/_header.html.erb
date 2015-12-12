@@ -1,0 +1,50 @@
+<!-- site__header -->
+<header class="site__header">
+
+  <!-- site__header-wrap -->
+  <div class="site__header-wrap">
+
+    <!-- site__header-inner -->
+    <div class="site__header-inner">
+
+      <!-- logo -->
+      <h1 class="logo">
+        <img src="/assets/logo.png" alt="Good Deal"/>
+
+      </h1>
+      <!-- /logo -->
+      <%- if user_signed_in? %>
+        <!-- sign-in -->
+          <%= current_user.name %>
+          <%= link_to 'ВЫЙТИ', destroy_user_session_path, method: :delete, class: 'sign-in' %>
+        <!-- /sign-in -->
+      <%- else %>
+          <!-- sign-out -->
+          <%= link_to "ВОЙТИ", user_omniauth_authorize_path(provider: :facebook), class: 'sign-in' %>
+          <!-- /sign-out -->
+      <% end %>
+    </div>
+    <!-- /site__header-inner -->
+
+  </div>
+  <!-- /site__header-wrap -->
+
+  <!-- site__header-title -->
+  <div class="site__header-title">
+    <div>
+      <div class="site__header-title-wrapp">
+        <h2>
+          Стань дедом морозом
+        </h2>
+        <p>Предсказывать будущее - на самом деле интересное занятие. Задумываясь о судьбах мира, пытаясь понять,
+          в каком направлении двигается развитие человечества, можно в полной мере проявить</p>
+      </div>
+    </div>
+    <!-- site__header-scroll-icon -->
+    <div class="site__header-scroll-icon"></div>
+    <!-- /site__header-scroll-icon -->
+  </div>
+  <!-- /site__header-title -->
+
+</header>
+<!-- /site__header -->

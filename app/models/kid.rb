@@ -5,11 +5,11 @@ class Kid < ActiveRecord::Base
 
   # validates :name, :age, :description, :video, :address, presence: true
 
-  enum status: [:free, :in_list, :pending_send, :pending_approval, :received, :approved] unless instance_methods.include? :status
+  enum status: [:free, :in_list, :pending_send, :pending_approval, :approved] unless instance_methods.include? :status
 
   mount_uploader :video, VideoUploader
 
   def deliver!
-    self.update_columns(status: 3)
+    self.update_columns(status: 4)
   end
 end

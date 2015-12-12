@@ -1,0 +1,6 @@
+Volonter:
+  fields:
+    default: email, password, password_confirmation
+    form: email, password, password_confirmation
+    relationships: volonter_kids, kids
+  application: Application

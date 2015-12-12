@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'responders', '~> 2.0'
 
 gem 'rails-api'
 gem 'roar-rails'
@@ -21,6 +20,17 @@ gem 'kaminari'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
+gem 'devise'
+
+gem 'koala', '~> 2.0'
+gem 'inherited_resources'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'carrierwave-video'
+gem 'typus', github: 'typus/typus'
+gem 'carrierwave-video-thumbnailer'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'

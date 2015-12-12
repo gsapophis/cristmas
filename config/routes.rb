@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+  devise_for :volonters
+  devise_for :users
   root 'home#index'
+  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :sessions
+      resources :kids do
+        get 'all', on: :collection
+      end
+    end
+  end
   resources :home do
     get 'second_page', on: :collection
     get 'more', on: :collection
   end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

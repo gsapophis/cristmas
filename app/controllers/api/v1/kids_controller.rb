@@ -3,7 +3,7 @@ class API::V1::KidsController < API::BaseController
   respond_to :json
 
   def index
-    @kids = current_user.kids
+    @kids = current_user.kids.by_status(2)
     respond_with @kids.page(params[:page]).per(params[:per]), status: 200
   end
 
@@ -25,7 +25,7 @@ class API::V1::KidsController < API::BaseController
   end
 
   def all
-    @kids = Kid.all
+    @kids = Kid.all.not_delivered
     respond_with @kids.page(params[:page]).per(6), status: 200
   end
 

@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( application2.js )
+Rails.application.config.assets.precompile += %w( personal_page.js )

@@ -1,8 +1,7 @@
 class KidsController < ApplicationController
   respond_to :html
 
-  def index
-  end
+  layout :personal_page, only: :personal_page
 
   def add_to_pending
     unscoped_resource.add_to_pending(current_user.id)
@@ -14,6 +13,10 @@ class KidsController < ApplicationController
 
   def remove_from_list
     resource.remove_from_list
+  end
+
+  def personal_page
+
   end
 
   protected

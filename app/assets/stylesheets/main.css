@@ -223,7 +223,6 @@ html, body {
     font-family: "proximanova-thin", sans-serif;
 }
 .site__content {
-    height: 1000px;
     padding-top: 150px;
     position: relative;
     top: 100%;
@@ -264,19 +263,16 @@ html, body {
     height: 13px;
     background-position: -5px -5px;
 }
-
 .footer__social-g {
     width: 17px;
     height: 14px;
     background-position: -22px -5px;
 }
-
 .footer__social-in {
     width: 14px;
     height: 14px;
     background-position: -49px -5px;
 }
-
 .footer__social-t {
     width: 14px;
     height: 12px;

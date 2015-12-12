@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
   respond_to :html
   layout false, only: :second_page
+
+  def index
+    @kids = Kid.all.page(params[:page]).per(6)
+  end
+
   def home
   end
 

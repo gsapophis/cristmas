@@ -1,6 +1,6 @@
 require 'representable/json/collection'
 
-class BaseRepresenter < Roar::Decorator
+class API::BaseRepresenter < Roar::Decorator
   include Roar::JSON
   include Roar::Hypermedia
 

@@ -13,9 +13,15 @@ class API::V1::KidsController < API::BaseController
     respond_with @kid, status: :created, current_user: current_user, location: api_v1_kids_url(@kid)
   end
 
+  def deliver
+    @kid = current_user.kids.create permitted_params
+    @kid.volonter_kids.create volonter_id: current_user.id
+    respond_with @kid, status: :created, current_user: current_user, location: api_v1_kids_url(@kid)
+  end
+
   def all
     @kids = Kid.all
-    respond_with @kids.page(params[:page]).per(6), status: 200
+    respond_with @kids.page(params[:page]).per(2), status: 200
   end
 
   private

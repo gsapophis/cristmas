@@ -4,19 +4,17 @@ class KidsController < ApplicationController
   def index
   end
 
-  def show
-  end
-
-  def destroy
+  def add_to_favorite
+    current_user.add_to_faworite(params[:kid_id])
   end
 
   protected
   def resource
-    @kid = @current_user.kids.find(params[:id])
+    @kid = current_user.kids.find(params[:id])
   end
 
   def collection
-    @kids = @current_user.kids.order('created_at DESC')
+    @kids = current_user.kids.order('created_at DESC')
   end
 
   def permitted_params

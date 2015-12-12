@@ -12,8 +12,12 @@ class API::V1::KidsController < API::BaseController
     respond_with @kid, status: :created, current_user: current_user, location: api_v1_kids_url(@kid)
   end
 
+  def show
+    respond_with resource
+  end
+
   def deliver
-    @kid = current_user.kids.find(parms[:id])
+    @kid = resource
     @kid.deliver!
     respond_with @kid, status: 200
   end
@@ -24,6 +28,10 @@ class API::V1::KidsController < API::BaseController
   end
 
   private
+  def resource
+    current_user.kids.find(parms[:id])
+  end
+
   def permitted_params
     params.permit(:name, :address, :age, :video, :description)
   end

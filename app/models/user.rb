@@ -13,6 +13,11 @@ class User < ActiveRecord::Base
 
   after_create :build_profile_association
 
+  def add_to_favorite(id)
+    kid = Kid.find(id)
+    kid.update_colums(user_id: id) unless kid.user_id
+  end
+
   protected
 
   def build_profile_association

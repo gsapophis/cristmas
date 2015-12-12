@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/typus/typus.git
+  revision: 493842a2039d528664d0afe475a127fabb361b6e
+  specs:
+    typus (4.0.0.beta1)
+      bcrypt (~> 3.1.10)
+      rails (~> 4.2.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -243,6 +251,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   turbolinks
+  typus!
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 

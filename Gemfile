@@ -28,6 +28,8 @@ gem 'inherited_resources'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'typus', github: 'typus/typus'
+
 group :development, :test do
   gem 'byebug'
 end

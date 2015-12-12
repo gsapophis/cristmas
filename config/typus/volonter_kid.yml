@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+VolonterKid:
+  fields:
+    default: volonter_id, kid_id, status
+    form: volonter_id, kid_id, status
+  relationships: 
+  application: Application

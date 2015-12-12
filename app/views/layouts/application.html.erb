@@ -10,5 +10,15 @@
 
 <%= yield %>
 
+<%- if @current_user %>
+  <li>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  </li>
+<%- else %>
+  <li>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(provider: :facebook) %>
+  </li>
+<% end %>
+
 </body>
 </html>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212195815) do
+ActiveRecord::Schema.define(version: 20151212203840) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.integer "volonter_id", limit: 4
@@ -68,11 +68,13 @@ ActiveRecord::Schema.define(version: 20151212195815) do
   create_table "user_authorizations", force: :cascade do |t|
     t.string   "provider",   limit: 255
     t.string   "uid",        limit: 255
+    t.string   "token",      limit: 255
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  add_index "user_authorizations", ["token"], name: "index_user_authorizations_on_token", using: :btree
   add_index "user_authorizations", ["uid"], name: "index_user_authorizations_on_uid", using: :btree
   add_index "user_authorizations", ["user_id"], name: "index_user_authorizations_on_user_id", using: :btree
 

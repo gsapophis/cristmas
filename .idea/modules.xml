@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../EffectiveFunnels/.idea/EffectiveFunnels.iml" filepath="$PROJECT_DIR$/../EffectiveFunnels/.idea/EffectiveFunnels.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GoodDeal.iml" filepath="$PROJECT_DIR$/.idea/GoodDeal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../effectiveexperiments/.idea/effectiveexperiments.iml" filepath="$PROJECT_DIR$/../effectiveexperiments/.idea/effectiveexperiments.iml" />
+    </modules>
+  </component>
+</project>

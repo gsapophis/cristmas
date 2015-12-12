@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     get 'second_page', on: :collection
     get 'more', on: :collection
   end
+
+  resources :kids
+  resources :user_kids
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

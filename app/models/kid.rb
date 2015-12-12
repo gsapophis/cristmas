@@ -5,7 +5,7 @@ class Kid < ActiveRecord::Base
   has_many :volonter_kids, dependent: :destroy
   has_many :volonters, through: :volonter_kids
 
-  validates :name, :age, :description, :video, :address, presence: true
+  # validates :name, :age, :description, :video, :address, presence: true
 
   enum status: [:free, :pending_send, :pending_approval, :approved] unless instance_methods.include? :status
   mount_uploader :video, VideoUploader

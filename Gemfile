@@ -31,6 +31,8 @@ gem 'carrierwave-video'
 gem 'typus', github: 'typus/typus'
 gem 'carrierwave-video-thumbnailer'
 gem 'rack-cors'
+gem 'mongrel', '1.2.0.pre2'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'

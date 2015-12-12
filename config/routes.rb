@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get 'more', on: :collection
   end
 
-  resources :kids
+  resources :kids do
+    put 'add_to_favorite', on: :collection
+  end
   resources :user_kids
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

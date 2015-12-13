@@ -35,7 +35,9 @@
 
   <!-- kid__buttons -->
   <div class="kid__buttons">
-    <%= render 'kids/kids_buttons', :@kid => @kid %>
+    <%- if current_user %>
+      <%= render 'kids/kids_buttons', :@kid => @kid %>
+    <% end %>
   </div>
   <!-- /kid__buttons -->
 

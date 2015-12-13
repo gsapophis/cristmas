@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   layout false, only: :second_page
 
   def index
-    @kids = Kid.not_delivered.page(params[:page]).per(6)
+    @kids = Kid.not_delivered.order('created_at DESC').page(params[:page]).per(6)
   end
 end

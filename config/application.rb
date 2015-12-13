@@ -30,6 +30,8 @@ module GoodDeal
     # config.i18n.default_locale = :de
 
     config.i18n.default_locale = :ru
+    I18n.default_locale = :ru
+    I18n.locale = :ru
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.middleware.use ActionDispatch::Flash
     config.api_only = false

@@ -1,0 +1,7 @@
+<%- if @kid.status == 'free' %>
+    <!-- kid__ok -->
+    <div class="kid__ok" data-url="<%= add_to_pending_kids_path(id: @kid.id) %>" data-method="PUT">Хочу поздравить</div>
+<%- elsif @kid.status == 'in_list' %>
+    <div class="kid__ok" data-url="<%= accept_sending_kid(@kid) %>" data-method="PUT">Отправил</div>
+    <div class="kid__cancel" data-url="<%= remove_from_list_kid_path(@kid) %>" data-method="DELETE">Я передумал</div>
+<%- end %>

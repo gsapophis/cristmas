@@ -1,0 +1,42 @@
+
+
+  <!-- kid__video -->
+  <div class="kid__video kid__panding">
+
+    <%= @kid.video.try(:url) %>
+    <!-- kid__share -->
+    <div class="kid__share">
+      <ul>
+        <li><a href="#" class="share_t"></a></li>
+        <li><a href="#" class="share_f"></a></li>
+      </ul>
+    </div>
+    <!-- /kid__share -->
+
+
+
+  </div>
+  <!-- /kid__video -->
+
+  <!-- kid__info -->
+  <div class="kid__info">
+    <div class="card__name"><%= @kid.name %>, <span><%= "#{@kid.age} #{t('custom.year', count: @kid.age)}" %></span></div>
+  </div>
+  <!-- /kid__info -->
+  <!-- kid__info -->
+  <div class="kid__info">
+    <div class="card__place"><%= @kid.address %></div>
+  </div>
+  <!-- /kid__info -->
+
+  <!-- kid__description -->
+  <div class="kid__description"><%= @kid.description %></div>
+  <!-- /kid__description -->
+
+  <!-- kid__buttons -->
+  <div class="kid__buttons">
+    <%= render 'kids/kids_buttons', :@kid => @kid %>
+  </div>
+  <!-- /kid__buttons -->
+
+</div>

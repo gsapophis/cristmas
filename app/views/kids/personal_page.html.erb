@@ -26,6 +26,39 @@
   <!-- site__content -->
   <div class="site__content">
 
+    <!-- cards -->
+    <div class="cards">
+
+      <h2>добро пожаловать в личный кабинет</h2>
+
+      <!-- cards__filter -->
+      <div class="cards__filter">
+        <a href="#" class="active">Все</a>
+        <a href="#">Ожидают</a>
+        <a href="#">Отправили</a>
+        <a href="#">Получили</a>
+      </div>
+      <!-- /cards__filter -->
+
+      <ul>
+        <%= render 'kids/kids', :@kids => @kids %>
+      </ul>
+
+      <!-- cards__more -->
+      <form class="cards__more" action="<%= home_index_path %>">
+
+        <!-- btn -->
+        <button class="btn">
+          Показать еще
+        </button>
+        <!-- /btn -->
+
+      </form>
+      <!-- /cards__more -->
+
+    </div>
+    <!-- /cards -->
+
     <!-- site__foter -->
     <footer class="site__foter"></footer>
     <!-- /site__foter -->

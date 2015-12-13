@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < ApplicationController
+
   def facebook
     process_omniauth_provider
   end

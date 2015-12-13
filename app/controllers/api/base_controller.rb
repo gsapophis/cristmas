@@ -70,11 +70,6 @@ class API::BaseController < ActionController::API
     end
   end
 
-  def track_user(ip, id, status= :sign_in)
-    LoginHistory.create ip: ip, logged_in_at: Time.now, user_id: id, status: status
-  rescue
-  end
-
   private
 
   def cors_headers

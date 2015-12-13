@@ -216,8 +216,10 @@
                 _obj.on( 'click', '.card', function(){
                     _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
-                $('body').on( 'click', '.kid__ok', function(){
+                $('.kid').on( 'click', '.kid__ok', function(){
                     var curBtn = $(this);
+
+                    console.log(1);
 
                     _request.abort();
                     _request = $.ajax({

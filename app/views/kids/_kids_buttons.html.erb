@@ -9,5 +9,9 @@
         <div class="kid__ok">Кто-то уже желает отправить подарок</div>
     <% end %>
 <%- elsif @kid.status == 'pending_approval' %>
-    <div class="kid__ok">Ожидает подтверждения доставки</div>
+    <%- if @kid.user_id == current_user.id %>
+      <div class="kid__ok">Ожидает подтверждения доставки</div>
+    <% else %>
+      <div class="kid__ok">Кто-то уже отправил подарок</div>
+    <% end %>
 <%- end %>

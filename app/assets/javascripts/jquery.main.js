@@ -220,7 +220,6 @@
                 $('.kid').on( 'click', '.kid__ok', function(){
                     var curBtn = $(this);
 
-                    console.log(1);
 
                     _request.abort();
                     _request = $.ajax({
@@ -230,7 +229,6 @@
                         timeout: 20000,
                         type: curBtn.data('method'),
                         success: function ( msg ) {
-                            console.log( msg );
                         },
                         error: function (XMLHttpRequest) {
                             if (XMLHttpRequest.statusText != "abort") {
@@ -243,7 +241,6 @@
                 $('.kid').on( 'click', '.kid__cancel', function(){
                     var curBtn = $(this);
 
-                    console.log(1);
 
                     _request.abort();
                     _request = $.ajax({
@@ -253,7 +250,6 @@
                         timeout: 20000,
                         type: curBtn.data('method'),
                         success: function ( msg ) {
-                            console.log( msg );
                         },
                         error: function (XMLHttpRequest) {
                             if (XMLHttpRequest.statusText != "abort") {
@@ -313,7 +309,6 @@
                     timeout: 20000,
                     type: 'GET',
                     success: function ( msg ) {
-                        console.log( msg );
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {

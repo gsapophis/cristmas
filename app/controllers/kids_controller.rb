@@ -16,7 +16,7 @@ class KidsController < ApplicationController
   end
 
   def personal_page
-    @kids = collection
+    @kids = collection.by_status(params[:f])
   end
 
   def show

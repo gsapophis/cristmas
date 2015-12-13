@@ -12,10 +12,10 @@
 
       <!-- cards__filter -->
       <div class="cards__filter">
-        <a href="#" class="active">Все</a>
-        <a href="#">Ожидают</a>
-        <a href="#">Отправили</a>
-        <a href="#">Получили</a>
+        <a href="<%= personal_page_kids_path %>" class="active">Все</a>
+        <a href="<%= personal_page_kids_path(f: 1) %>">Добавлены в список</a>
+        <a href="<%= personal_page_kids_path(f: 2) %>">Ожидают получения</a>
+        <a href="<%= personal_page_kids_path(f: 3) %>">Получили</a>
       </div>
       <!-- /cards__filter -->
 
@@ -24,14 +24,14 @@
       </ul>
 
       <!-- cards__more -->
-      <form class="cards__more" action="<%= home_index_path %>">
-
+      <form class="cards__more" action="<%= personal_page_kids_path %>">
+      <%- if @kids.size > 6 %>
         <!-- btn -->
         <button class="btn">
           Показать еще
         </button>
         <!-- /btn -->
-
+      <% end %>
       </form>
       <!-- /cards__more -->
 

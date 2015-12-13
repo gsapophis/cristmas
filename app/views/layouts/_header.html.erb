@@ -25,7 +25,7 @@
       <!-- /logo -->
       <%- if user_signed_in? %>
           <%- if controller_name != 'kids' %>
-            <a class="personal" href="/kids/personal_page">Персональный кабинет</a>
+            <a class="personal" href="<%= personal_page_kids_path %>">Персональный кабинет</a>
           <% end %>
         <!-- sign-in -->
           <%= link_to current_user.name, destroy_user_session_path, method: :delete, class: 'sign-out' %>

@@ -118,8 +118,6 @@
             _setSize = function(){
                 $('.site__content').height( 'auto' );
 
-                console.log($('.site__content').height(), $( window ).height());
-                
                 if($('.site__content').outerHeight() < $( window ).height() ){
                     $('.site__content').outerHeight(  $( window ).height()  );
                 }

@@ -50,6 +50,9 @@
                 _window.on({
                     load: function(){
                         _showSite();
+                    },
+                    resize: function(){
+                        _setSize();
                     }
                 });
                 _scrollIcon.on({
@@ -142,6 +145,7 @@
                         horizrailenabled: false
                     });
                 }
+                _setSize();
 
                 _addEvents();
 
@@ -185,6 +189,15 @@
                         _addEventsOnLoad();
                     },500);
                 }, 1000 );
+            },
+            _setSize = function(){
+                $('.site__content').height( 'auto' );
+
+
+                if($('.site__content').outerHeight() < $( window ).height() ){
+                    $('.site__content').outerHeight(  $( window ).height()  );
+                }
+
             };
 
         //public properties

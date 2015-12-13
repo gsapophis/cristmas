@@ -15,8 +15,7 @@
       <!-- /logo -->
       <%- if user_signed_in? %>
         <!-- sign-in -->
-          <%= current_user.name %>
-          <%= link_to 'ВЫЙТИ', destroy_user_session_path, method: :delete, class: 'sign-in' %>
+          <%= link_to current_user.name, destroy_user_session_path, method: :delete, class: 'sign-in' %>
         <!-- /sign-in -->
       <%- else %>
           <!-- sign-out -->

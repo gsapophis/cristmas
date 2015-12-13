@@ -235,17 +235,19 @@
                 _request = $.ajax({
                     url: _moreForm.attr('action'),
                     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-                    dataType: 'json',
+                    dataType: 'script',
                     data: {
                         page: Math.floor( _obj.find('li').length / 6 )+1
                     },
                     timeout: 20000,
                     type: 'GET',
                     success: function ( msg ) {
-                        if( !msg.has_items ){
-                            _moreForm.remove();
-                        }
-                        _addCards(msg.items);
+                        //if( !msg.has_items ){
+                        //    _moreForm.remove();
+                        //}
+                        _obj.find('.hidden').each( function(i){
+                            _showCard($(this), i+1);
+                        } );
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {

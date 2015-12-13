@@ -6,12 +6,17 @@
 
     <!-- cards -->
     <div class="cards">
+
+      <h2>Ты можешь помочь ребенку</h2>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+
       <ul>
         <%= render 'kids/kids', :@kids => @kids %>
       </ul>
 
       <!-- cards__more -->
-      <form class="cards__more" action="api/v1/kids/all">
+      <form class="cards__more" action="<%= home_index_path %>">
 
         <!-- btn -->
         <button class="btn">

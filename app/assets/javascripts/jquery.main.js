@@ -9,9 +9,6 @@
             new Cards( $(this) );
         } );
 
-        $( '.snow' ).each( function(){
-            new Snow('this');
-        } );
 
     } );
 
@@ -272,56 +269,5 @@
         _init();
     };
 
-    var Snow = function (obj) {
-
-        //private properties
-        var _self = this,
-            _obj = obj,
-            _canvas = _obj[0];
-
-        //private methods
-        var _addEvents = function () {
-            
-            },
-            _init = function () {
-                _addEvents();
-                _obj[0].snow = _self;
-                _loop( 0 )
-            },
-            _loop = function(time){
-
-                requestAnimationFrame(loop)
-            };
-
-        //public properties
-
-        //public methods
-
-
-        _init();
-    };
-
-    var Snowflake = function (obj) {
-
-        //private properties
-        var _self = this,
-            _obj = obj;
-
-        //private methods
-        var _addEvents = function () {
-
-            },
-            _init = function () {
-                _addEvents();
-                _obj[0].snowflake = _self;
-            };
-
-        //public properties
-
-        //public methods
-
-
-        _init();
-    };
 
 } )();

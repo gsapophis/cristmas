@@ -608,13 +608,6 @@ html, body {
 }
 /* --------------- sign-in --------------- */
 
-/* --------------- snow --------------- */
-.snow {
-    position: fixed;
-    pointer-events: none;
-    z-index: 10;
-}
-/* --------------- /snow --------------- */
 
 @-webkit-keyframes spin-2 {
     0% {

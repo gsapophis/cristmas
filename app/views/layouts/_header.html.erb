@@ -14,9 +14,9 @@
       </h1>
       <!-- /logo -->
       <%- if user_signed_in? %>
-
-          <a class="personal" href="/kids/personal_page">Персональный кабинет</a>
-
+          <%- if controller_name != 'kids' %>
+            <a class="personal" href="/kids/personal_page">Персональный кабинет</a>
+          <% end %>
         <!-- sign-in -->
           <%= link_to current_user.name, destroy_user_session_path, method: :delete, class: 'sign-out' %>
         <!-- /sign-in -->

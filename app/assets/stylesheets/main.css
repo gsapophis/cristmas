@@ -428,18 +428,13 @@ html, body {
 
 /* --------------- cards --------------- */
 .cards {
-    width: 1000px;
+    width: 1048px;
     margin: 0 auto 58px;
     text-align: center;
 }
 .cards ul{
-    text-align: justify;
+    text-align: left;
     margin-bottom: 8px;
-}
-.cards ul:after {
-    display: inline-block;
-    width: 100%;
-    content: '';
 }
 .cards li {
     display: inline-block;
@@ -498,7 +493,7 @@ html, body {
     width: 317px;
     height: 211px;
     color: #868686;
-    margin-bottom: 29px;
+    margin: 0 14px 29px;
     cursor: pointer;
 }
 .card:hover:after {
@@ -506,7 +501,7 @@ html, body {
     height: 247px;
     border: 1px solid #8e8e8e;
     top: -17px;
-    left: -11px;
+    left: 3px;
     box-sizing: border-box;
     content: '';
     position: absolute;

@@ -1,5 +1,5 @@
 class KidsController < ApplicationController
-  respond_to :html
+  respond_to :html, :js
 
   layout :personal_page, only: :personal_page
 
@@ -16,6 +16,10 @@ class KidsController < ApplicationController
   end
 
   def personal_page
+  end
+
+  def show
+    @kid = unscoped_resource
   end
 
   protected

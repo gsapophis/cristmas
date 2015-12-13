@@ -48,14 +48,10 @@ var popup = null;
                             self.core.centerWrap();
                         }
                     } );
-                    self.btnShow.on( {
-                        click: function(){
-                            var curItem = $( this );
+                    $('body').on( 'click','.popup__open',  function(){
+                        var curItem = $( this );
 
-                            self.core.show( curItem.attr( 'data-popup' ) );
-
-                            //return false;
-                        }
+                        self.core.show( curItem.attr( 'data-popup' ) );
                     } );
                     self.wrap.on( {
                         click: function( event ){
@@ -85,10 +81,10 @@ var popup = null;
                     self.popup.css ({
                         'overflow-y': "hidden"
                     });
-                    //self.scrollConteiner.css( {
-                    //    "overflow-y": "scroll",
-                    //    paddingRight: 0
-                    //} );
+                    self.scrollConteiner.css( {
+                        "overflow-y": "scroll",
+                        paddingRight: 0
+                    } );
                     self.popup.removeClass('popup_opened');
                     self.popup.addClass('popup_hide');
                     location.hash = '';
@@ -113,10 +109,10 @@ var popup = null;
                 show: function( className ){
                     self.core.setPopupContent( className );
 
-                    //self.scrollConteiner.css( {
-                    //    overflow: "hidden",
-                    //    paddingRight: self.core.getScrollWidth()
-                    //} );
+                    self.scrollConteiner.css( {
+                        overflow: "hidden",
+                        paddingRight: self.core.getScrollWidth()
+                    } );
                     self.popup.addClass('popup_opened');
                     self.core.centerWrap();
 

@@ -16,7 +16,7 @@
         <!-- /card__pic -->
 
         <!-- card__name -->
-        <div class="card__name"><%= kid.name %>, <span><%= pluralize(kid.age, 'год') %></span></div>
+        <div class="card__name"><%= kid.name %>, <span><%= "#{kid.age} #{t('custom.year', count: kid.age)}" %></span></div>
         <!-- /card__name -->
 
         <!-- card__place -->

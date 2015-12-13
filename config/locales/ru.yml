@@ -1,0 +1,7 @@
+ru:
+  custom:
+    year:
+      one: "год"
+      few: "лет"
+      many: "лет"
+      other: "лет"

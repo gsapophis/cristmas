@@ -8,10 +8,20 @@
     <div class="site__header-inner">
 
       <!-- logo -->
-      <h1 class="logo">
-        <img src="/assets/logo.png" alt="Good Deal"/>
 
-      </h1>
+        <%- if controller_name != 'kids' %>
+
+          <h1 class="logo">
+            <img src="/assets/logo.png" alt="Good Deal"/>
+          </h1>
+      <% else %>
+          <a href="/" class="logo">
+            <img src="/assets/logo.png" alt="Good Deal"/>
+          </a>
+        <% end %>
+
+
+
       <!-- /logo -->
       <%- if user_signed_in? %>
           <%- if controller_name != 'kids' %>

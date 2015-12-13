@@ -25,11 +25,13 @@
 
       <!-- cards__more -->
       <form class="cards__more" action="<%= personal_page_kids_path %>">
+      <%- if @kids.total_count > 6 %>
         <!-- btn -->
         <button class="btn">
           Показать еще
         </button>
         <!-- /btn -->
+      <% end %>
       </form>
       <!-- /cards__more -->
 
@@ -50,3 +52,4 @@
   <img src="/assets/logo_big.png" alt="Preloader" width="120" height="71"/>
 </div>
 <!-- /preloader -->
+<%= render 'kids/popup' %>

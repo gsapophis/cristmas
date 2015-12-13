@@ -1,7 +1,7 @@
 class KidsController < ApplicationController
   respond_to :html, :js
 
-  layout :personal_page, only: :personal_page
+  layout 'personal_page', only: :personal_page
 
   def add_to_pending
     unscoped_resource.add_to_pending(current_user.id)
@@ -16,6 +16,7 @@ class KidsController < ApplicationController
   end
 
   def personal_page
+    @kids = collection
   end
 
   def show

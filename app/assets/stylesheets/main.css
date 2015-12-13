@@ -86,6 +86,7 @@ html, body {
 .site__header_hidden {
     height: 80px;
 }
+
 .site__header:after {
     content: '';
     position: absolute;
@@ -98,6 +99,9 @@ html, body {
     opacity: 0;
     -webkit-transition: opacity 600ms ease-in-out 1000ms;
     transition: opacity 600ms ease-in-out 1000ms;
+}
+.site_inner .site__header:after {
+    opacity: 1;
 }
 .site__header_hidden:after {
     opacity: .8;
@@ -571,6 +575,21 @@ html, body {
 }
 /* --------------- /card --------------- */
 
+/* --------------- personal --------------- */
+.personal {
+    font-family: "calibri", Sans-Serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 257px;
+    top: 37px;
+    color: rgba(255,255,255,.75);
+    -webkit-transition: color 300ms ease-in-out;
+    transition: color 300ms ease-in-out;
+}
+/* --------------- /personal --------------- */
+
+
 /* --------------- sign-in --------------- */
 .sign-in {
     font-family: "calibri", Sans-Serif;
@@ -612,6 +631,48 @@ html, body {
     transform: translateX(5px);
 }
 /* --------------- sign-in --------------- */
+
+/* --------------- sign-out --------------- */
+.sign-out {
+    font-family: "calibri", Sans-Serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 27px;
+    top: 37px;
+    color: rgba(255,255,255,.75);
+    -webkit-transition: color 300ms ease-in-out;
+    transition: color 300ms ease-in-out;
+    padding-left: 45px;
+}
+.sign-out:before {
+    position: absolute;
+    content: '';
+    background: url("sign-out-before.png");
+    width: 22px;
+    height: 13px;
+    top: -1px;
+    left: -5px;
+    -webkit-transition: -webkit-transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out;
+}
+.sign-out:after {
+    position: absolute;
+    content: '';
+    background: url("sign-in-after.png");
+    width: 29px;
+    height: 25px;
+    top: -7px;
+    left: 0;
+}
+.sign-out:hover{
+    color: rgba(255,255,255,1);
+}
+.sign-out:hover:before{
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+}
+/* --------------- sign-out --------------- */
 
 /* --------------- kid --------------- */
 .kid {
@@ -682,7 +743,6 @@ html, body {
     height: 13px;
     background-position: -2px -2px;
 }
-
 .share_t {
     width: 14px;
     height: 12px;

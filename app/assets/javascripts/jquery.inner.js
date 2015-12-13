@@ -35,7 +35,7 @@
                 _ctx.arc(101, 101, 99, 1.5*Math.PI, (1.5 + 2*fillPercent) * Math.PI);
 
                 _ctx.lineWidth=3;
-                _ctx.strokeStyle="#96c11f";
+                _ctx.strokeStyle="#ff1a1a";
                 _ctx.stroke();
             },
             _addEvents = function () {

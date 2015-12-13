@@ -30,23 +30,23 @@
 
   </div>
   <!-- /site__header-wrap -->
-
-  <!-- site__header-title -->
-  <div class="site__header-title">
-    <div>
-      <div class="site__header-title-wrapp">
-        <h2>
-          Стань дедом морозом
-        </h2>
-        <p>Предсказывать будущее - на самом деле интересное занятие. Задумываясь о судьбах мира, пытаясь понять,
-          в каком направлении двигается развитие человечества, можно в полной мере проявить</p>
+  <%- if controller_name != 'kids' %>
+    <!-- site__header-title -->
+    <div class="site__header-title">
+      <div>
+        <div class="site__header-title-wrapp">
+          <h2>
+            Стань дедом морозом
+          </h2>
+          <p>Предсказывать будущее - на самом деле интересное занятие. Задумываясь о судьбах мира, пытаясь понять,
+            в каком направлении двигается развитие человечества, можно в полной мере проявить</p>
+        </div>
       </div>
+      <!-- site__header-scroll-icon -->
+      <div class="site__header-scroll-icon"></div>
+      <!-- /site__header-scroll-icon -->
     </div>
-    <!-- site__header-scroll-icon -->
-    <div class="site__header-scroll-icon"></div>
-    <!-- /site__header-scroll-icon -->
-  </div>
-  <!-- /site__header-title -->
-
+    <!-- /site__header-title -->
+  <% end %>
 </header>
 <!-- /site__header -->

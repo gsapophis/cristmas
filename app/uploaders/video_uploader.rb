@@ -3,7 +3,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video::Thumbnailer
 
   version :thumb do
-    process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true}]
+    process thumbnail: [{format: 'png', size: 317, strip: true}]
     def full_filename for_file
       png_name for_file, version_name
     end
@@ -21,7 +21,11 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   version :mp4 do
-    process :encode_video => [:mp4]
+    process encode_video: [:mp4]
+  end
+
+  version :mov do
+    process encode_video: [:mov]
   end
 
   def save_video_duration

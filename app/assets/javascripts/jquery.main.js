@@ -218,7 +218,8 @@
                         _loadKid( $(this).data('id'), $(this).data('url') );
 
                     } else {
-                        alert( 'Необходимо залогинится' )
+                        alert( 'Необходимо залогинится' );
+                        return false;
                     }
                 } );
                 $('.kid').on( 'click', '.kid__ok', function(){

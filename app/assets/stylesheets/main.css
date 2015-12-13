@@ -70,6 +70,9 @@ html, body {
     right: 0;
     bottom: 0;
 }
+.site_inner {
+    height: auto;
+}
 .site__header {
     position: absolute;
     top: 0;
@@ -469,6 +472,25 @@ html, body {
     width: 738px;
     margin: 0 auto 61px;
 }
+.cards__filter {
+    padding: 10px 0 50px;
+}
+.cards__filter a {
+    display: inline-block;
+    color: #544f6e;
+    margin:  0 20px;
+    font-size: 14px;
+    font-family: calibri, Sans-Serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+.cards__filter a.active {
+    font-family: calibrib, Sans-Serif;
+    text-decoration: underline !important;
+}
+.cards__filter a:hover {
+    text-decoration: none;
+}
 /* --------------- /cards --------------- */
 
 /* --------------- card --------------- */
@@ -586,6 +608,9 @@ html, body {
     color: rgba(255,255,255,.75);
     -webkit-transition: color 300ms ease-in-out;
     transition: color 300ms ease-in-out;
+}
+.personal:hover{
+    color: rgba(255,255,255,1);
 }
 /* --------------- /personal --------------- */
 

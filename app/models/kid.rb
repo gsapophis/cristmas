@@ -5,6 +5,9 @@ class Kid < ActiveRecord::Base
 
   validates :name, :age, :description, :video, :address, presence: true
 
+  scope :not_delivered,   -> ()   { where.not(status: 3) }
+  scope :by_status, -> (status) { where(status: status) }
+
   enum status: [:free, :in_list, :pending_approval, :delivered] unless instance_methods.include? :status
 
   mount_uploader :video, VideoUploader
@@ -12,6 +15,10 @@ class Kid < ActiveRecord::Base
 
   def add_to_pending(id)
     self.update_columns(user_id: id, status: 1) unless self.user_id
+  end
+
+  def can_be_accepted?
+    status == 0
   end
 
   def accept_sending

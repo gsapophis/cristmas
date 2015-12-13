@@ -1,5 +1,5 @@
 class KidsController < ApplicationController
-  respond_to :html
+  respond_to :html, :js
 
   layout :personal_page, only: :personal_page
 

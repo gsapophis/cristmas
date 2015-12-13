@@ -216,6 +216,29 @@
                 _obj.on( 'click', '.card', function(){
                     _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
+                $('.kid').on( 'click', '.kid__ok', function(){
+                    var curBtn = $(this);
+
+                    console.log(1);
+
+                    _request.abort();
+                    _request = $.ajax({
+                        url: curBtn.data('url'),
+                        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                        dataType: 'script',
+                        timeout: 20000,
+                        type: curBtn.data('method'),
+                        success: function ( msg ) {
+                            console.log( msg );
+                        },
+                        error: function (XMLHttpRequest) {
+                            if (XMLHttpRequest.statusText != "abort") {
+
+                            }
+                        }
+                    });
+                  //  _loadKid( $(this).data('id'), $(this).data('url') );
+                } );
             },
             _init = function () {
                 _addEvents();

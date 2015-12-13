@@ -3,7 +3,12 @@
   <!-- kid__video -->
   <div class="kid__video kid__panding">
 
-    <%= @kid.video.try(:url) %>
+    <video controls>
+      <source src=" <%= @kid.video.try(:url) %>" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+
     <!-- kid__share -->
     <div class="kid__share">
       <ul>

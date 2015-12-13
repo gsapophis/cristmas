@@ -9,7 +9,7 @@
           <img src="<%= kid.try(:thumb) %>" alt="">
 
           <!-- card__time -->
-          <div class="card__time">00:<%= kid.video_duration.to_i %></div>
+          <div class="card__time"><%= kid.get_video_duration %></div>
           <!-- /card__time -->
           
         </div>

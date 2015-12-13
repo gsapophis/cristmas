@@ -37,6 +37,10 @@ class Kid < ActiveRecord::Base
     self.try(:video).try(:thumb).try(:url)
   end
 
+  def get_video_duration
+    Time.at(video_duration.to_i).utc.strftime("%M:%S")
+  end
+
   def get_class_kid
     if status == 1
       'card__panding'

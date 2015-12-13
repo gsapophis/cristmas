@@ -14,18 +14,17 @@
       <ul>
         <%= render 'kids/kids', :@kids => @kids %>
       </ul>
-
+      <%- if @kids.total_count > 6 %>
       <!-- cards__more -->
       <form class="cards__more" action="<%= home_index_path %>">
-
-        <!-- btn -->
-        <button class="btn">
-          Показать еще
-        </button>
-        <!-- /btn -->
-
+          <!-- btn -->
+          <button class="btn">
+            Показать еще
+          </button>
+          <!-- /btn -->
       </form>
       <!-- /cards__more -->
+      <%- end %>
 
     </div>
     <!-- /cards -->
@@ -43,36 +42,5 @@
   <img src="/assets/logo_big.png" alt="Preloader" width="120" height="71"/>
 </div>
 <!-- /preloader -->
-
-<!-- popup -->
-<div class="popup">
-
-  <!-- popup__wrap -->
-  <div class="popup__wrap">
-
-    <!-- popup__content -->
-    <div class="popup__content popup__card">
-
-      <!-- kid -->
-      <div class="kid">
-
-        <!-- popup__close -->
-        <div class="popup__close"></div>
-        <!-- /popup__close -->
-        <div class="popup_replace">
-
-        </div>
-
-      </div>
-      <!-- /kid -->
-
-    </div>
-    <!-- /popup__content -->
-
-
-  </div>
-  <!-- /popup__wrap -->
-
-</div>
-<!-- /popup -->
+<%= render 'kids/popup' %>
 

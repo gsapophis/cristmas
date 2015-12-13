@@ -29,6 +29,22 @@ class Kid < ActiveRecord::Base
     self.update_columns(status: 0, user_id: nil)
   end
 
+  def feedback_thumb
+    self.try(:feedback_video).try(:thumb).try(:url)
+  end
+
+  def thumb
+    self.try(:video).try(:thumb).try(:url)
+  end
+
+  def get_class_kid
+    if status == 1
+      'card__panding'
+    elsif status == 2
+      'card__send'
+    end
+  end
+
   def delivered!(video)
     self.update_attributes(feedback_video: video, status: 3)
   end

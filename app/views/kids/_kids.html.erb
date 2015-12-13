@@ -2,25 +2,25 @@
 
     <li class="<%= @hidden ? 'hidden' : '' %>">
       <!-- card -->
-      <div class="card card__panding">
+      <div class="card <%= kid.get_class_kid %>" id="<%= kid.id %>">
 
         <!-- card__pic -->
         <div class="card__pic">
-          <img src="" alt="">
+          <img src="<%= kid.try(:thumb) %>" alt="">
 
           <!-- card__time -->
-          <div class="card__time">00:25</div>
+          <div class="card__time">00:<%= kid.video_duration.to_i %></div>
           <!-- /card__time -->
           
         </div>
         <!-- /card__pic -->
 
         <!-- card__name -->
-        <div class="card__name">Снежана Прохорова, <span>6 лет</span></div>
+        <div class="card__name"><%= kid.name %>, <span><%= pluralize(kid.age, 'год') %></span></div>
         <!-- /card__name -->
 
         <!-- card__place -->
-        <div class="card__place">г.Киев, Проспект Свободы 145 Б</div>
+        <div class="card__place"><%= kid.address %></div>
         <!-- /card__place -->
 
       </div>

@@ -38,7 +38,7 @@ class UserAuthorization < ActiveRecord::Base
         email: email,
         password: pass,
         password_confirmation: pass,
-        name: (attributes['name'] || [attributes['first_name'], attributes['last_name']].join(' ')).tr('^A-Za-zА-юа-ю', '')
+        name: (attributes['name'] || [attributes['first_name'], attributes['last_name']].join('  ')).tr('^A-Za-zА-юа-ю', '')
     )
   end
 

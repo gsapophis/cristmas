@@ -33,7 +33,7 @@ gem 'carrierwave-video-thumbnailer'
 gem 'rack-cors'
 gem 'mongrel', '1.2.0.pre2'
 gem 'faker'
-gem 'russian', '~> 0.6.0'
+gem 'russian'
 
 group :development, :test do
   gem 'byebug'

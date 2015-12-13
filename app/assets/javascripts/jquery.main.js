@@ -63,7 +63,7 @@
                     'DOMMouseScroll':function(e){
                         var delta =  e.originalEvent.detail;
 
-                        if( delta ){
+                        if( delta && !$('.popup_opened').length ){
                             var direction = ( delta > 0 ) ? 1 : -1;
 
                             if( !_action ){
@@ -79,7 +79,7 @@
                     'mousewheel': function(e){
                         var delta = e.originalEvent.wheelDelta;
 
-                        if( delta ){
+                        if( delta && !$('.popup_opened').length ){
                             var direction = ( delta > 0 ) ? -1 : 1;
 
 

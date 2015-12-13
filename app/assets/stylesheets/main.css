@@ -89,7 +89,6 @@ html, body {
 .site__header_hidden {
     height: 80px;
 }
-
 .site__header:after {
     content: '';
     position: absolute;
@@ -251,12 +250,22 @@ html, body {
     top: 100%;
     -webkit-transition: top 1s ease-in-out;
     transition: top 1s ease-in-out;
+    padding-bottom: 1px;
+}
+.site__content:after {
+    content: '';
+    height: 86px;
+    display: block;
 }
 .site__footer {
     height: 86px;
     background: #110f08;
     font-family: "proximanova-thin", sans-serif;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .site__footer-wrap {
     width: 1000px;

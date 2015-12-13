@@ -46,6 +46,9 @@
                 _window.on({
                     load: function(){
                         _showSite();
+                    },
+                    resize: function(){
+                        _setSize()
                     }
                 });
 
@@ -79,21 +82,10 @@
                     _canDraw = false;
                 }
             },
-            _hideHeader = function(){
-                if(!_action){
-                    _action = true;
-
-                    _header.addClass('site__header_hidden');
-
-                    //for css animation
-                    setTimeout(function(){
-                        _action = false;
-                    }, 1000);
-                }
-            },
             _init = function () {
                 _body[0].page = _self;
 
+                _setSize();
                 _addEvents();
 
                 _loop(0);
@@ -106,19 +98,6 @@
                 }
                 requestAnimationFrame(_loop);
 
-            },
-            _showHeader = function(){
-                if(!_action){
-                    _action = true;
-
-                    _header.removeClass('site__header_hidden_out');
-                    _header.removeClass('site__header_hidden');
-
-                    //for css animation
-                    setTimeout(function(){
-                        _action = false;
-                    }, 1000);
-                }
             },
             _showSite = function(){
                 //For css animation
@@ -135,6 +114,16 @@
                         _addEventsOnLoad();
                     },500);
                 }, 1000 );
+            },
+            _setSize = function(){
+                $('.site__content').height( 'auto' );
+
+                console.log($('.site__content').height(), $( window ).height());
+                
+                if($('.site__content').outerHeight() < $( window ).height() ){
+                    $('.site__content').outerHeight(  $( window ).height()  );
+                }
+
             };
 
         //public properties

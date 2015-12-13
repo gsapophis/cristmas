@@ -24,14 +24,14 @@
       </ul>
 
       <!-- cards__more -->
-      <form class="cards__more" action="<%= home_index_path %>">
-
+      <form class="cards__more" action="/kids/personal_page">
+      <%- if @kids.count > 6 %>
         <!-- btn -->
         <button class="btn">
           Показать еще
         </button>
         <!-- /btn -->
-
+      <% end %>
       </form>
       <!-- /cards__more -->
 

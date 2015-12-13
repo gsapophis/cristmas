@@ -5,6 +5,10 @@
 
         new Page();
 
+        $( '.cards').each( function(){
+            new Cards( $(this) );
+        } );
+
     } );
 
     var Page = function () {
@@ -131,6 +135,147 @@
                         _addEventsOnLoad();
                     },500);
                 }, 1000 );
+            };
+
+        //public properties
+
+        //public methods
+
+
+        _init();
+    };
+
+    var Cards = function ( obj ) {
+
+        //private properties
+        var _self = this,
+            _obj = obj,
+            _moreForm = _obj.find('.cards__more'),
+            _content = _obj.find('ul'),
+            _request = new XMLHttpRequest();
+
+        //private methods
+        var _addEvents = function () {
+                _moreForm.on({
+                    submit: function(){
+                        _loadMoreCards();
+
+                        return false;
+                    }
+                });
+                _obj.on( 'click', '.card', function(){
+                    if( $( '.sign-out' ).length ){
+                        _loadKid( $(this).data('id'), $(this).data('url') );
+
+                    } else {
+                        alert( 'Необходимо залогинится' );
+                        return false;
+                    }
+                } );
+                $('.kid').on( 'click', '.kid__ok', function(){
+                    var curBtn = $(this);
+
+                    console.log(1);
+
+                    _request.abort();
+                    _request = $.ajax({
+                        url: curBtn.data('url'),
+                        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                        dataType: 'script',
+                        timeout: 20000,
+                        type: curBtn.data('method'),
+                        success: function ( msg ) {
+                            console.log( msg );
+                        },
+                        error: function (XMLHttpRequest) {
+                            if (XMLHttpRequest.statusText != "abort") {
+
+                            }
+                        }
+                    });
+                    //  _loadKid( $(this).data('id'), $(this).data('url') );
+                } );
+                $('.kid').on( 'click', '.kid__cancel', function(){
+                    var curBtn = $(this);
+
+                    console.log(1);
+
+                    _request.abort();
+                    _request = $.ajax({
+                        url: curBtn.data('url'),
+                        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                        dataType: 'script',
+                        timeout: 20000,
+                        type: curBtn.data('method'),
+                        success: function ( msg ) {
+                            console.log( msg );
+                        },
+                        error: function (XMLHttpRequest) {
+                            if (XMLHttpRequest.statusText != "abort") {
+
+                            }
+                        }
+                    });
+                    //  _loadKid( $(this).data('id'), $(this).data('url') );
+                } );
+            },
+            _init = function () {
+                _addEvents();
+                _obj[0].cards = _self;
+            },
+            _loadMoreCards = function(){
+                _request.abort();
+                _request = $.ajax({
+                    url: _moreForm.attr('action'),
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                    dataType: 'script',
+                    data: {
+                        page: Math.floor( _obj.find('li').length / 6 )+1
+                    },
+                    timeout: 20000,
+                    type: 'GET',
+                    success: function ( msg ) {
+                        //if( !msg.has_items ){
+                        //    _moreForm.remove();
+                        //}
+                        _obj.find('.hidden').each( function(i){
+                            _showCard($(this), i+1);
+                        } );
+                    },
+                    error: function (XMLHttpRequest) {
+                        if (XMLHttpRequest.statusText != "abort") {
+
+                        }
+                    }
+                });
+            },
+            _showCard = function( card, i ){
+
+                setTimeout(function(){
+                    card.removeClass('hidden')
+                }, 100 * i)
+
+            },
+            _loadKid = function( id, url ){
+                _request.abort();
+                _request = $.ajax({
+                    url: url,
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                    dataType: 'script',
+                    data: {
+                        id: id
+                    },
+                    timeout: 20000,
+                    type: 'GET',
+                    success: function ( msg ) {
+                        console.log( msg );
+                    },
+                    error: function (XMLHttpRequest) {
+                        if (XMLHttpRequest.statusText != "abort") {
+
+                        }
+                    }
+                });
             };
 
         //public properties

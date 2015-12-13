@@ -23,6 +23,7 @@ class KidsController < ApplicationController
   end
 
   protected
+
   def resource
     @kid = current_user.kids.find(params[:id])
   end

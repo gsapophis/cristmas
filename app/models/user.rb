@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
          omniauth_providers: PROVIDERS
 
   has_many :kids
-  has_one  :profile, dependent: :destroy
   has_many :user_authorizations, dependent: :destroy
+  has_one  :profile, dependent: :destroy
 
   delegate :image, to: :profile
 

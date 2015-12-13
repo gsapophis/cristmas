@@ -1,4 +1,5 @@
 class AccessToken < ActiveRecord::Base
+
   belongs_to :volonter
 
   validates :volonter, presence: true

@@ -34,6 +34,7 @@ gem 'rack-cors'
 gem 'mongrel', '1.2.0.pre2'
 gem 'faker'
 gem 'russian'
+gem 'mini_exiftool'
 
 group :development, :test do
   gem 'byebug'

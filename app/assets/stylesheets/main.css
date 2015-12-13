@@ -740,8 +740,8 @@ html, body {
     background: url("share.png");
     width: 27px;
     height: 21px;
-    right: 20px;
-    bottom: 19px;
+    right: -37px;
+    bottom: 0px;
     position: absolute;
     overflow: hidden;
 }

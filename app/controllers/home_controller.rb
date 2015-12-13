@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  respond_to :html
+  respond_to :html, :js
   layout false, only: :second_page
 
   def index

@@ -205,16 +205,7 @@
             _request = new XMLHttpRequest();
 
         //private methods
-        var _addCards = function( cards ){
-                $.each( cards, function(){
-                    _content.append( ' <li class="hidden"><div class="card"></div></li>' );
-
-                    _obj.find('.hidden').each( function(i){
-                        _showCard($(this), i+1);
-                    } );
-                } );
-            },
-            _addEvents = function () {
+        var _addEvents = function () {
                 _moreForm.on({
                     submit: function(){
                         _loadMoreCards();
@@ -222,6 +213,9 @@
                         return false;
                     }
                 });
+                _obj.on( 'click', '.card', function(){
+                    _loadKid( $(this).data('id'), $(this).data('url') );
+                } );
             },
             _init = function () {
                 _addEvents();
@@ -259,6 +253,27 @@
                     card.removeClass('hidden')
                 }, 100 * i)
 
+            },
+            _loadKid = function( id, url ){
+                _request.abort();
+                _request = $.ajax({
+                    url: url,
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                    dataType: 'script',
+                    data: {
+                        id: id
+                    },
+                    timeout: 20000,
+                    type: 'GET',
+                    success: function ( msg ) {
+                        console.log( msg );
+                    },
+                    error: function (XMLHttpRequest) {
+                        if (XMLHttpRequest.statusText != "abort") {
+
+                        }
+                    }
+                });
             };
 
         //public properties

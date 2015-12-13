@@ -54,7 +54,7 @@ var popup = null;
 
                             self.core.show( curItem.attr( 'data-popup' ) );
 
-                            return false;
+                            //return false;
                         }
                     } );
                     self.wrap.on( {

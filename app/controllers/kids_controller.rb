@@ -18,6 +18,10 @@ class KidsController < ApplicationController
   def personal_page
   end
 
+  def show
+    @kid = unscoped_resource
+  end
+
   protected
 
   def resource

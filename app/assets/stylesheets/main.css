@@ -379,7 +379,7 @@ html, body {
 .popup__wrap {
     position: relative;
     z-index: 2;
-    width: 527px;
+    width: 870px;
     margin: 0 auto;
     padding-bottom: 40px;
 }
@@ -391,16 +391,21 @@ html, body {
 }
 .popup__close {
     position: absolute;
-    right: 18px;
-    top: 17px;
-    background: url("../img/popup-close.png") no-repeat 0 0;
-    width: 15px;
-    height: 15px;
+    right: 13px;
+    top: 13px;
+    background: url("popup-close.png") no-repeat 0 0;
+    width: 21px;
+    height: 22px;
     text-indent: -5000px;
     cursor: pointer;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: -webkit-transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out;
 }
 .popup__close:hover {
-    opacity: 0.8;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 .popup__close:active {
     background-position: 0 bottom;
@@ -608,6 +613,122 @@ html, body {
 }
 /* --------------- sign-in --------------- */
 
+/* --------------- kid --------------- */
+.kid {
+    min-height: 600px;
+    background: #fff;
+    position: relative;
+    padding: 52px 61px 48px 62px;
+}
+.kid__panding:after {
+    width: 42px;
+    height: 46px;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 14px;
+    background: #fff url("panding.png") no-repeat center;
+}
+.kid__send:after {
+    width: 42px;
+    height: 46px;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 14px;
+    background: #fff url("card__sended.png") no-repeat center;
+}
+.kid__video {
+    background: red;
+    width: 747px;
+    height: 361px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 35px;
+}
+.kid__share{
+    background: url("share.png");
+    width: 27px;
+    height: 21px;
+    right: 20px;
+    bottom: 19px;
+    position: absolute;
+    overflow: hidden;
+}
+.kid__share:hover {
+    overflow: visible;
+}
+.kid__share ul {
+    position: absolute;
+    bottom: 99%;
+    left: 50%;
+    margin-left: -7px;
+}
+.kid__share a {
+    background-image: url(share__social.png);
+    background-repeat: no-repeat;
+    display: block;
+    margin: 10px auto;
+}
+
+.share_f {
+    width: 7px;
+    height: 13px;
+    background-position: -2px -2px;
+}
+
+.share_t {
+    width: 14px;
+    height: 12px;
+    background-position: -13px -2px;
+}
+.kid__info {
+    text-align: center;
+}
+.kid__info > div {
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.kid__description {
+    background: url("kid__description.png") no-repeat center 20px;
+    font-size: 14px;
+    color: #6b6b6b;
+    line-height: 20px;
+    text-align: center;
+    width: 485px;
+    padding-top: 115px;
+    margin: 0 auto 35px;
+    font-family: "calibri", Sans-Serif;
+}
+.kid__buttons {
+    text-align: center;
+}
+.kid__ok {
+    display: inline-block;
+    width: 167px;
+    height: 40px;
+    background: #394687;
+    vertical-align: top;
+    font-size: 16px;
+    color: #fff;
+    font-family: "calibri", Sans-Serif;
+    padding-top: 13px;
+}
+.kid__cancel {
+    display: inline-block;
+    width: 167px;
+    background: #fff;
+    border: 1px solid #394687;
+    height: 40px;
+    vertical-align: top;
+    font-size: 16px;
+    margin-left: 16px;
+    color: #394687;
+    font-family: "calibri", Sans-Serif;
+    padding-top: 11px;
+
+}
+/* --------------- /kid --------------- */
 
 @-webkit-keyframes spin-2 {
     0% {

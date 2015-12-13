@@ -214,13 +214,8 @@
                     }
                 });
                 _obj.on( 'click', '.card', function(){
-                    if( $( '.sign-out' ).length ){
                         _loadKid( $(this).data('id'), $(this).data('url') );
 
-                    } else {
-                        alert( 'Необходимо залогинится' );
-                        return false;
-                    }
                 } );
                 $('.kid').on( 'click', '.kid__ok', function(){
                     var curBtn = $(this);

@@ -36,6 +36,9 @@ gem 'faker'
 gem 'russian'
 gem 'mini_exiftool'
 
+gem 'unicorn'
+gem 'unicorn-worker-killer'
+
 group :development, :test do
   gem 'byebug'
 end
@@ -43,5 +46,11 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  gem 'capistrano'
+  gem 'capistrano-git-copy', require: false
+  gem 'capistrano-rails'
+  gem 'capistrano-unicorn-nginx'
+  gem 'capistrano-rvm'
 end
 

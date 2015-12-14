@@ -2,6 +2,6 @@ ru:
   custom:
     year:
       one: "год"
-      few: "лет"
+      few: "года"
       many: "лет"
       other: "лет"

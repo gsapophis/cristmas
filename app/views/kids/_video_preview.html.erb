@@ -1,6 +1,4 @@
-
-
-  <!-- kid__video -->
+ <!-- kid__video -->
   <div class="kid__video">
 
     <video controls>
@@ -19,9 +17,9 @@
     <!-- /kid__share -->
 
 
-
   </div>
   <!-- /kid__video -->
+ <%= social_share_button_tag(@kid.name, :url => "http://myapp.com/foo/bar", :image => "http://foo.bar/images/a.jpg", desc: "The summary of page", via: "MyTwitterName") %>
 
   <!-- kid__info -->
   <div class="kid__info">

@@ -16,3 +16,4 @@
 //= require jquery.nicescroll.min
 //= require jquery.popup
 //= require jquery.main
+//= require social-share-button

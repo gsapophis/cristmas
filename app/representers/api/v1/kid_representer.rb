@@ -3,6 +3,7 @@ class API::V1::KidRepresenter < API::BaseRepresenter
   property :name
   property :video, getter: lambda { |args| video.try(:url, 'mp4') }
   property :address
+  property :description
   property :status
   property :thumb, getter: lambda { |args| video.try(:thumb).try(:url) }
   property :feedback_video, getter: lambda { |args| feedback_video.try(:url, 'mp4') }

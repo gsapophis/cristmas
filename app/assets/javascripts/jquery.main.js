@@ -348,16 +348,20 @@
                 });
             },
             _makeFacebook = function(){
-                var link = $( '.kid' ).find( '.share_f' ),
+                var links = $( '.kid' ).find( '.share_f' ),
                     data = $( '.kid__share' ).data( "kid"),
                     picture = '&picture=' + data.photo,
-                    url = data.name + ". Ты можешь подарить ребенку радость. " + location.href;
+                    name = '&name=' + data.name,
+                    link = '&link=' + location.href,
+                    description = '&description=' + $('.kid__description').text(),
+                    url = '&redirect_uri=' + location.host;
 
+                console.log( name + link + description  + url + picture );
 
-                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page&name=' + data.name + '&link=' + location.href + '&description=' + $('.kid__description').text()  + '&redirect_uri=' + location.host + picture);
+                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description);
 
-                link.attr({
-                    href: '#'
+                links.attr({
+                    href: url
                 });
             },
             _openPopupById = function(){

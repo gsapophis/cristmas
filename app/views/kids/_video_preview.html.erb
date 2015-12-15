@@ -8,10 +8,10 @@
 
 
     <!-- kid__share -->
-    <div class="kid__share">
+    <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:thumb) }\"  }" %>">
       <ul>
-        <li><a href="#" class="share_t"></a></li>
-        <li><a href="#" class="share_f"></a></li>
+        <li><a href="#" target="_blank" class="share_t"></a></li>
+        <li><a href="#" target="_blank" class="share_f"></a></li>
       </ul>
     </div>
     <!-- /kid__share -->
@@ -19,7 +19,6 @@
 
   </div>
   <!-- /kid__video -->
- <%= social_share_button_tag(@kid.name, :url => "http://myapp.com/foo/bar", :image => "http://foo.bar/images/a.jpg", desc: "The summary of page", via: "MyTwitterName") %>
 
   <!-- kid__info -->
   <div class="kid__info">

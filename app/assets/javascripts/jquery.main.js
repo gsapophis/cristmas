@@ -302,6 +302,10 @@
                 } );
 
             },
+            _addSharing = function(){
+                _makeTweeter();
+                _makeFacebook();
+            },
             _init = function () {
                 _addEvents();
                 _obj[0].cards = _self;
@@ -332,6 +336,30 @@
                     }
                 });
             },
+            _makeTweeter = function(){
+                var link = $( '.kid' ).find( '.share_t' ),
+                    data = $( '.kid__share' ).data( "kid"),
+                    url = data.name + ". Ты можешь подарить ребенку радость. " + location.href;
+
+                url = ( 'https://twitter.com/intent/tweet?text=' + url  + '&amp;source=webclient');
+
+                link.attr({
+                    href: url
+                });
+            },
+            _makeFacebook = function(){
+                var link = $( '.kid' ).find( '.share_f' ),
+                    data = $( '.kid__share' ).data( "kid"),
+                    picture = '&picture=' + data.photo,
+                    url = data.name + ". Ты можешь подарить ребенку радость. " + location.href;
+
+
+                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page&name=' + data.name + '&link=' + location.href + '&description=' + $('.kid__description').text()  + '&redirect_uri=' + location.host + picture);
+
+                link.attr({
+                    href: '#'
+                });
+            },
             _openPopupById = function(){
                 var id = location.pathname.substr( location.pathname.lastIndexOf('/') + 1 );
 
@@ -358,6 +386,7 @@
                     type: 'GET',
                     success: function ( msg ) {
                         popup.core.centerWrap();
+                        _addSharing();
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {

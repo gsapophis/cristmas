@@ -3,7 +3,7 @@ class API::V1::KidsController < API::BaseController
   respond_to :json
 
   def index
-    @kids = current_user.kids.by_status(2)
+    @kids = current_user.kids.by_status(params[:status] || 2)
     respond_with @kids.page(params[:page]).per(params[:per] || 20), status: 200
   end
 
@@ -51,6 +51,6 @@ class API::V1::KidsController < API::BaseController
   end
 
   def permitted_params
-    params.permit(:name, :address, :age, :video, :description)
+    params.permit(:name, :address, :status, :age, :video, :description)
   end
 end

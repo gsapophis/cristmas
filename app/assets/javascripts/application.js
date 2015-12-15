@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require device
 //= require jquery.nicescroll.min
-//= require jquery.popup
 //= require jquery.main
 //= require social-share-button

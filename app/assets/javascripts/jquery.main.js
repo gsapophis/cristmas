@@ -357,6 +357,7 @@
                     timeout: 20000,
                     type: 'GET',
                     success: function ( msg ) {
+                        popup.core.centerWrap();
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {

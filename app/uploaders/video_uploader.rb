@@ -18,7 +18,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # process :save_video_duration
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "system/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   process :encode

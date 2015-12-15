@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :volonters
   root 'home#index'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
   match 'profile' => 'kids#personal_page', via: 'get'
   match 'kids/:id' => 'home#index', via: 'get', format: 'html'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :sessions

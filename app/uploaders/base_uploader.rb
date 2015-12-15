@@ -14,13 +14,13 @@ class BaseUploader < CarrierWave::Uploader::Base
     if in_tests?
       File.join(Rails.root, "tmp/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}")
     else
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+      "system/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "uploads/fallback/" + [version_name, "default.gif"].compact.join('_')
+    "system/uploads/fallback/" + [version_name, "default.gif"].compact.join('_')
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

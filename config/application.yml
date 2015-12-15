@@ -1,3 +1,6 @@
 development:
+  facebook_app_id: 1677799742476710
+  facebook_app_secret: 83e7869aa04722a001800f5805a50f91
+production:
   facebook_app_id: 1676945035895514
   facebook_app_secret: 66077a38696e00619daf20d47eabb22c

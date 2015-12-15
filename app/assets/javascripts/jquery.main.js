@@ -60,6 +60,7 @@
                         _checkScroll(1);
                     }
                 });
+
             },
             _addEventsOnLoad = function(){
                 _window.on({
@@ -202,6 +203,7 @@
 
         //public properties
 
+
         //public methods
 
 
@@ -215,6 +217,7 @@
             _obj = obj,
             _moreForm = _obj.find('.cards__more'),
             _content = _obj.find('ul'),
+            _window = $( window ),
             _request = new XMLHttpRequest();
 
         //private methods
@@ -227,8 +230,12 @@
                     }
                 });
                 _obj.on( 'click', '.card', function(){
-                        _loadKid( $(this).data('id'), $(this).data('url') );
+                    _loadKid( $(this).data('id'), $(this).data('url') );
 
+                    window.history.pushState({}, $(this).find('.card__name').text(), $(this).data('url'));
+                } );
+                $('.kid').on( 'click', '.popup__close', function(){
+                    window.history.back();
                 } );
                 $('.kid').on( 'click', '.kid__ok', function(){
                     var curBtn = $(this);
@@ -272,6 +279,19 @@
                     });
                   //  _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
+                _window[0].onpopstate = function(){
+                    if( location.href.indexOf('/kids/') >= 0 ){
+                        _openPopupById();
+                    }
+                };
+                _window.on( {
+                    load: function(){
+                        if( location.href.indexOf('/kids/') >= 0 ){
+                            _openPopupById();
+                        }
+                    }
+                } );
+
             },
             _init = function () {
                 _addEvents();
@@ -302,6 +322,9 @@
                         }
                     }
                 });
+            },
+            _openPopupById = function(){
+                console.log(location.pathname.indexOf('/'));
             },
             _showCard = function( card, i ){
 
@@ -338,6 +361,5 @@
 
         _init();
     };
-
 
 } )();

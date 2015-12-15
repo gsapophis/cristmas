@@ -73,7 +73,6 @@ var popup = null;
                     self.btnClose.on( {
                         click: function(){
                             self.core.hide();
-                            return false;
                         }
                     } );
                 },

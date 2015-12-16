@@ -303,8 +303,8 @@
 
             },
             _addSharing = function(){
-                _makeTweeter();
-                _makeFacebook();
+                //_makeTweeter();
+                //_makeFacebook();
             },
             _init = function () {
                 _addEvents();
@@ -343,9 +343,9 @@
 
                 url = ( 'https://twitter.com/intent/tweet?text=' + url  + '&amp;source=webclient');
 
-                link.attr({
-                    href: url
-                });
+                //link.attr({
+                //    href: url
+                //});
             },
             _makeFacebook = function(){
                 var links = $( '.kid' ).find( '.share_f' ),

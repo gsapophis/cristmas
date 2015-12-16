@@ -65,7 +65,7 @@ class Kid < ActiveRecord::Base
 
   protected
   def build_tweet
-    resp = $twitter_client.update_with_media("#{description} \n #{name}", File.new(video.try(:thumb).try(:path)))
+    resp = $twitter_client.update_with_media("#{description} \n\n #{name}, #{I18n.t('custom.year', count: age.to_i)}", File.new(video.try(:thumb).try(:path)))
     self.update_columns(tweet_image_url: resp.media.collect(&:media_url).first.to_s)
   end
 end

@@ -356,7 +356,7 @@
                     description = '&description=' + $('.kid__description').text(),
                     url = '&redirect_uri=http://www.' + location.host;
 
-                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description + url);
+                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description + url + picture);
 
                 links.attr({
                     href: url

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212222728) do
+ActiveRecord::Schema.define(version: 20151216122310) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.integer "volonter_id", limit: 4
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20151212222728) do
     t.string   "feedback_video",          limit: 255
     t.string   "video_duration",          limit: 255
     t.string   "feedback_video_duration", limit: 255
+    t.string   "tweet_image_url",         limit: 255
   end
 
   add_index "kids", ["address"], name: "index_kids_on_address", using: :btree

@@ -3,6 +3,8 @@ class Kid < ActiveRecord::Base
   belongs_to :user
   belongs_to :volonter
 
+  after_create :build_tweet
+
   validates :name, :age, :description, :video, :address, presence: true
 
   scope :not_delivered,   -> ()   { where.not(status: 3) }
@@ -50,7 +52,7 @@ class Kid < ActiveRecord::Base
   end
 
   def actual_video_url
-    status =='delivered' ? eedback_video.try(:url, 'mp4') : video.try(:url, 'mp4')
+    status =='delivered' ? feedback_video.try(:url, 'mp4') : video.try(:url, 'mp4')
   end
 
   def actual_thumb_url
@@ -59,5 +61,11 @@ class Kid < ActiveRecord::Base
 
   def delivered!(video)
     self.update_attributes(feedback_video: video, status: 3)
+  end
+
+  protected
+  def build_tweet
+    resp = $twitter_client.update_with_media("#{description} \n #{name}", File.new(video.try(:thumb).try(:path)))
+    self.update_columns(tweet_image_url: resp.media.collect(&:media_url).first.to_s)
   end
 end

@@ -8,12 +8,7 @@
 
   </div>
   <!-- /kid__video -->
- <%= tweet_button(via: "peterc", url: @url, text: "AWESOME.") %>
- <%= like_button ENV["facebook_app_id"],
-                 action: 'like',
-                 href: @url,
-                 layout: :button_count,
-                 send: true  %>
+
   <!-- kid__info -->
   <div class="kid__info">
     <div class="card__name"><%= @kid.name %>, <span><%= "#{@kid.age} #{t('custom.year', count: @kid.age)}" %></span></div>
@@ -40,7 +35,7 @@
  <!-- kid__share -->
  <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:thumb) }\", \"tweet\": \"#{@kid.tweet_image_url}\"  }" %>">
 
-   <a href="#" target="_blank" class="share_vk"></a>
+   <!--<a href="#" target="_blank" class="share_vk"></a>-->
    <a href="#" target="_blank" class="share_f"></a>
    <a href="#" target="_blank" class="share_t"></a>
 

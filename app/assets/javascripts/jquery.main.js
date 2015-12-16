@@ -303,8 +303,8 @@
 
             },
             _addSharing = function(){
-                //_makeTweeter();
-                //_makeFacebook();
+                _makeTweeter();
+                _makeFacebook();
             },
             _init = function () {
                 _addEvents();
@@ -339,13 +339,13 @@
             _makeTweeter = function(){
                 var link = $( '.kid' ).find( '.share_t' ),
                     data = $( '.kid__share' ).data( "kid"),
-                    url = data.name + ". Ты можешь подарить ребенку радость. " + location.href;
+                    url = data.name + ". Ты можешь подарить ребенку радость. &amp;image=" +  data.tweet;
 
-                url = ( 'https://twitter.com/intent/tweet?text=' + url  + '&amp;source=webclient');
+                url = ( 'https://twitter.com/intent/tweet?url=' + location.href  + '&amp;text=' + url + '&amp;source=webclient');
 
-                //link.attr({
-                //    href: url
-                //});
+                link.attr({
+                    href: url
+                });
             },
             _makeFacebook = function(){
                 var links = $( '.kid' ).find( '.share_f' ),
@@ -356,7 +356,7 @@
                     description = '&description=' + $('.kid__description').text(),
                     url = '&redirect_uri=' + location.host;
 
-                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description);
+                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description + url);
 
                 links.attr({
                     href: url

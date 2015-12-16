@@ -38,7 +38,8 @@ gem 'mini_exiftool'
 
 gem 'unicorn'
 gem 'unicorn-worker-killer'
-gem 'social-buttons', '~> 0.3'
+# gem 'social-buttons', '~> 0.3'
+gem 'social-share-button'
 
 group :development, :test do
   gem 'byebug'

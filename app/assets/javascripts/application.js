@@ -15,3 +15,4 @@
 //= require device
 //= require jquery.nicescroll.min
 //= require jquery.main
+//= require social-share-button

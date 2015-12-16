@@ -49,6 +49,14 @@ class Kid < ActiveRecord::Base
     end
   end
 
+  def actual_video_url
+    status =='delivered' ? eedback_video.try(:url, 'mp4') : video.try(:url, 'mp4')
+  end
+
+  def actual_thumb_url
+    status =='delivered' ? feedback_video.try(:thumb).try(:url) : video.try(:thumb).try(:url)
+  end
+
   def delivered!(video)
     self.update_attributes(feedback_video: video, status: 3)
   end

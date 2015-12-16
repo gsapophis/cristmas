@@ -43,6 +43,10 @@ class Kid < ActiveRecord::Base
     Time.at(video_duration.to_i).utc.strftime("%M:%S")
   end
 
+  def share_url
+    Rails.application.routes.url_helpers.kid_url(id).to_s.gsub('kids', 'kid')
+  end
+
   def get_class_kid
     if status == 1
       'card__panding'
@@ -65,7 +69,7 @@ class Kid < ActiveRecord::Base
 
   protected
   def build_tweet
-    url = "#{Rails.application.routes.url_helpers.kid_url(id).to_s.gsub('kids', 'kid')}"
+    url = "#{share_url}"
     resp = $twitter_client.update_with_media("#{description} \n\n #{name}, #{I18n.t('custom.year', count: age.to_i)} \n\n #{url}", File.new(video.try(:thumb).try(:path)))
     self.update_columns(tweet_image_url: resp.media.collect(&:media_url).first.to_s)
   end

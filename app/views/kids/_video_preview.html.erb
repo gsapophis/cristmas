@@ -6,17 +6,6 @@
       Your browser does not support the video tag.
     </video>
 
-
-    <!-- kid__share -->
-    <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:thumb) }\"  }" %>">
-      <ul>
-        <li><a href="#" target="_blank" class="share_t"></a></li>
-        <li><a href="#" target="_blank" class="share_f"></a></li>
-      </ul>
-    </div>
-    <!-- /kid__share -->
-
-
   </div>
   <!-- /kid__video -->
 
@@ -42,5 +31,15 @@
     <% end %>
   </div>
   <!-- /kid__buttons -->
+
+ <!-- kid__share -->
+ <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:thumb) }\"  }" %>">
+
+   <a href="#" target="_blank" class="share_vk"></a>
+   <a href="#" target="_blank" class="share_f"></a>
+   <a href="#" target="_blank" class="share_t"></a>
+
+ </div>
+ <!-- /kid__share -->
 
 </div>

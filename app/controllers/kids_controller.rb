@@ -21,7 +21,7 @@ class KidsController < ApplicationController
 
   def show
     @kid = unscoped_resource
-    @url =
+    @url = url_for(only_path: false, overwrite_params: nil)
   end
 
   protected

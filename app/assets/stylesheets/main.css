@@ -835,6 +835,7 @@ html, body {
 }
 .kid__buttons {
     text-align: center;
+    margin-bottom: 20px;
 }
 .kid__ok {
     display: inline-block;

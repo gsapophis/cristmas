@@ -354,7 +354,7 @@
                     name = '&name=' + data.name,
                     link = '&link=' + location.href,
                     description = '&description=' + $('.kid__description').text(),
-                    url = '&redirect_uri=' + location.host;
+                    url = '&redirect_uri=http://www.' + location.host;
 
                 url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description + url);
 

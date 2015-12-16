@@ -2,7 +2,7 @@
   <div class="kid__video">
 
     <video controls>
-      <source src=" <%= @kid.status =='delivered' ? @kid.feedback_video.try(:url, 'mp4') : @kid.video.try(:url, 'mp4') %>" type="video/mp4">
+      <source src=" <%= @kid.actual_video_url %>" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 

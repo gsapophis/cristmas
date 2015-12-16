@@ -1,6 +1,14 @@
 development:
   facebook_app_id: 946904705376845
   facebook_app_secret: befd2bb8a4770dbaf758670242656009
+  twitter_app_id: qEXNveLGWanixB91nbnhBU6WG
+  twitter_app_secret: ZDrBWgjPQEuXGHGFJzqGIp0P5doeUAvKHRdnJ4oGXinUdPiRYK
+  twitter_access_app_id: 1728224294-r6JfX3yi3v39TwbMKRyMplgH1NDeuzumF9GDM4s
+  twitter_access_app_secret: NxnNj8DfUcwS99xPB9hY3m8nf6kiXF8TyZl3g8ygJWgDE
 production:
   facebook_app_id: 1676945035895514
   facebook_app_secret: 66077a38696e00619daf20d47eabb22c
+  twitter_app_id: W98mW6kDJu6j60Nrnm3Pi3QFs
+  twitter_app_secret: CAgvt8uqhnZ0qqVgrWyQlrrfiSDPi8kIIxJh0RGJgYiqzELgze
+  twitter_access_app_id: 1728224294-kVq7D3XTfUSJhI9FY1BoNVFSR7y4f2474IdyWTU
+  twitter_access_app_secret: 9flrTO146GXYajTT0YhWeVcDO2AfGEKA62e17UWikHvQo

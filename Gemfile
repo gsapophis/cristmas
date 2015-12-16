@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.4'
 gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
@@ -38,7 +37,9 @@ gem 'mini_exiftool'
 
 gem 'unicorn'
 gem 'unicorn-worker-killer'
-gem 'social-buttons', '~> 0.3'
+# gem 'social-buttons', '~> 0.3'
+gem 'social-share-button'
+gem 'twitter'
 
 group :development, :test do
   gem 'byebug'

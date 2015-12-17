@@ -1,0 +1,4 @@
+<a href="<%= personal_page_kids_path(f: '') %>" class="<%= params[:f].nil? ? 'active' : '' %>">Все <%= (["(#{@kids.page(nil).size})"] - ["(0)"]).join('') %></a>
+<a href="<%= personal_page_kids_path(f: 1) %>" class="<%= params[:f]=='1' ? 'active' : ''%>">Добавлены в список <%= (["(#{@kids.page(nil).by_status(1).size})"] - ["(0)"]).join('') %> </a>
+<a href="<%= personal_page_kids_path(f: 2) %>" class="<%= params[:f]=='2' ? 'active' : ''%>">Ожидают получения <%= (["(#{@kids.page(nil).by_status(2).size})"] - ["(0)"]).join('') %></a>
+<a href="<%= personal_page_kids_path(f: 3) %>" class="<%= params[:f]=='3' ? 'active' : ''%>">Получили <%= (["(#{@kids.page(nil).by_status(3).size})"] - ["(0)"]).join('') %></a>

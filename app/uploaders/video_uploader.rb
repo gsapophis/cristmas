@@ -11,7 +11,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   def png_name for_file, version_name
-    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
   end
 
   # process encode_video: [:mp4]

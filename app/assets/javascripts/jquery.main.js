@@ -240,7 +240,7 @@
                 _obj.on( 'click', '.card', function(){
                     _loadKid( $(this).data('id'), $(this).data('url') );
 
-                   // window.history.pushState({}, $(this).find('.card__name').text(), $(this).data('url').replace('kids','kid'));
+                    window.history.pushState({}, $(this).find('.card__name').text(), $(this).data('url').replace('kids','kid'));
                 } );
                 $('.kid').on( 'click', '.popup__close', function(){
                     window.history.back();

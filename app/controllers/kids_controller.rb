@@ -1,5 +1,6 @@
 class KidsController < ApplicationController
   respond_to :html, :js
+  before_action :authenticate_user!, except: :show
 
   layout 'personal_page', only: :personal_page
 
@@ -21,6 +22,7 @@ class KidsController < ApplicationController
 
   def show
     @kid = unscoped_resource
+    @notsharable = params[:notsharable]
     @url = url_for(only_path: false, overwrite_params: nil)
   end
 

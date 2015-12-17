@@ -12,15 +12,15 @@
 
       <!-- cards__filter -->
       <div class="cards__filter">
-        <a href="<%= personal_page_kids_path %>" class="<%= params[:f].nil? ? 'active' : '' %>">Все</a>
-        <a href="<%= personal_page_kids_path(f: 1) %>" class="<%= params[:f]=='1' ? 'active' : ''%>">Добавлены в список</a>
-        <a href="<%= personal_page_kids_path(f: 2) %>" class="<%= params[:f]=='2' ? 'active' : ''%>">Ожидают получения</a>
-        <a href="<%= personal_page_kids_path(f: 3) %>" class="<%= params[:f]=='3' ? 'active' : ''%>">Получили</a>
+        <a href="<%= personal_page_kids_path %>" class="<%= params[:f].nil? ? 'active' : '' %>">Все <%= (["(#{@kids.unscoped.size})"] - ["(0)"]).join('') %></a>
+        <a href="<%= personal_page_kids_path(f: 1) %>" class="<%= params[:f]=='1' ? 'active' : ''%>">Добавлены в список <%= (["(#{@kids.unscoped.by_status(1).size})"] - ["(0)"]).join('') %> </a>
+        <a href="<%= personal_page_kids_path(f: 2) %>" class="<%= params[:f]=='2' ? 'active' : ''%>">Ожидают получения <%= (["(#{@kids.unscoped.by_status(2).size})"] - ["(0)"]).join('') %></a>
+        <a href="<%= personal_page_kids_path(f: 3) %>" class="<%= params[:f]=='3' ? 'active' : ''%>">Получили <%= (["(#{@kids.unscoped.by_status(3).size})"] - ["(0)"]).join('') %></a>
       </div>
       <!-- /cards__filter -->
 
       <ul>
-        <%= render 'kids/kids', :@kids => @kids %>
+        <%= render 'kids/kids', :@kids => @kids, :@notsharable => true %>
       </ul>
 
       <!-- cards__more -->

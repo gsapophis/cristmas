@@ -21,6 +21,7 @@ class KidsController < ApplicationController
 
   def show
     @kid = unscoped_resource
+    @notsharable = params[:notsharable]
     @url = url_for(only_path: false, overwrite_params: nil)
   end
 

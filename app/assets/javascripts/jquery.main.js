@@ -354,7 +354,7 @@
             _makeFacebook = function(){
                 var links = $( '.kid' ).find( '.share_f' ),
                     data = $( '.kid__share' ).data( "kid"),
-                    picture = '&picture=' + data.photo,
+                    picture = '&picture=' + 'http://gooddeal.my-dis.com/assets/baner.jpg',//data.photo,
                     name = '&name=' + data.name,
                     link = '&link=' + location.href,
                     description = '&description=' + $('.kid__description').text(),

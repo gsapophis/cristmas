@@ -1,4 +1,5 @@
 $(".cards ul").append("<%= escape_javascript(render 'kids/kids', :@kids => @kids, :@hidden => true) %>");
+$(".cards__filter").html("<%= escape_javascript(render 'kids/cards_filter', :@kids => @kids, params: @params) %>");
 <%- if @kids.last_page? %>
 $('.cards__more').remove();
 <% end %>

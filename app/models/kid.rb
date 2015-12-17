@@ -70,7 +70,7 @@ class Kid < ActiveRecord::Base
   protected
   def build_tweet
     url = "#{share_url}"
-    resp = $twitter_client.update_with_media("#{description} \n\n #{name}, #{I18n.t('custom.year', count: age.to_i)} \n\n #{url}", File.new(video.try(:thumb).try(:path)))
+    resp = $twitter_client.update_with_media("#{name}, #{age} #{I18n.t('custom.year', count: age.to_i)} \n\n #{url}", File.new(video.try(:thumb).try(:path)))
     self.update_columns(tweet_image_url: resp.media.collect(&:media_url).first.to_s)
   end
 end

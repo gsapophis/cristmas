@@ -4,7 +4,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video::Thumbnailer
 
   version :thumb do
-    process thumbnail: [{format: 'png', size: 317, strip: true}]
+    process thumbnail: [{format: 'jpg', size: 317, strip: true}]
     def full_filename for_file
       png_name for_file, version_name
     end

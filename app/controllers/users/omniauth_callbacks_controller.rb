@@ -17,6 +17,7 @@ class Users::OmniauthCallbacksController < ApplicationController
 
   def success_redirect
     flash[:success]= "You have successfully logged in with your #{ @auth['provider'].capitalize } account"
-    sign_in_and_redirect @user
+    sign_in @user
+    redirect_to_back(root_path)
   end
 end

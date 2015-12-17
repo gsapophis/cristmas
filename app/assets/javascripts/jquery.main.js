@@ -4,6 +4,11 @@
 
     'use strict';
 
+    if( location.hash == '#_=_'){
+        window.history.back();
+    }
+
+
     $( function(){
 
         new Page();

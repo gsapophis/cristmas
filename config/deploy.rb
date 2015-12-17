@@ -2,6 +2,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 load 'config/recipes/unicorn.rb'
+load 'config/recipes/db.rb'
 load 'config/recipes/other.rb'
 
 set :rvm_type, :user

@@ -8,7 +8,7 @@ class Kid < ActiveRecord::Base
   validates :name, :age, :description, :video, :address, presence: true
 
   scope :not_delivered,   -> ()   { where.not(status: 3) }
-  scope :by_status, -> (status) { where(status: status) if status }
+  scope :by_status, -> (status) { where(status: status) if status.present? }
 
   enum status: [:free, :in_list, :pending_approval, :delivered] unless instance_methods.include? :status
 

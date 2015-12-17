@@ -8,7 +8,6 @@
         window.history.back();
     }
 
-
     $( function(){
 
         new Page();
@@ -21,7 +20,6 @@
             popup = new Popup( $(this) );
 
         });
-
 
     } );
 
@@ -248,7 +246,8 @@
                     window.history.pushState({}, $(this).find('.card__name').text(), $(this).data('url').replace('kids','kid'));
                 } );
                 $('.kid').on( 'click', '.popup__close', function(){
-                    window.history.back();
+                    console.log(location.href.substr(0,location.href.indexOf('/kid')));
+                    window.history.pushState({}, 'GoodDeal', location.href.substr(0,location.href.indexOf('/kid')));
                 } );
                 $('.kid').on( 'click', '.kid__ok', function(){
                     var curBtn = $(this);

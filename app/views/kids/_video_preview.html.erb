@@ -36,7 +36,7 @@
 
  <!-- kid__share -->
   <%- unless @notsharable %>
-    <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:share_thumb) }\", \"tweet\": \"#{@kid.tweet_image_url}\"  }" %>">
+    <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:video).try(:share_thumb) }\", \"tweet\": \"#{@kid.tweet_image_url}\"  }" %>">
   <%- end %>
    <!--<a href="#" target="_blank" class="share_vk"></a>-->
    <a href="#" target="_blank" class="share_f"></a>

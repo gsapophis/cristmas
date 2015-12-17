@@ -41,13 +41,13 @@ class VideoUploader < CarrierWave::Uploader::Base
 
     if orientation == 90
       encode_video(:mp4, resolution: "200x300", watermark: {
-          path: File.join(Rails.root, "app/assets/images", "logo.png"),
+          path: File.join(Rails.root, "app/assets/images", "logo_water.png"),
           position: :top_right#, # also: :top_right, :bottom_left, :bottom_right
           # pixels_from_edge: 10
       })
     else
       encode_video(:mp4, watermark: {
-          path: File.join(Rails.root, "app/assets/images", "logo.png"),
+          path: File.join(Rails.root, "app/assets/images", "logo_water.png"),
           position: :top_right#, # also: :top_right, :bottom_left, :bottom_right
           # pixels_from_edge: 10
       })

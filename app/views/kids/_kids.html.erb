@@ -5,8 +5,8 @@
       <div class="popup__open card <%= kid.get_class_kid %>" data-popup="card" data-url="<%= kid_path(id: kid.id, notsharable: @notsharable) %>" data-id="<%= kid.id %>">
 
         <!-- card__pic -->
-        <div class="card__pic">
-          <img src="<%= kid.try(:thumb) %>" alt="">
+        <div class="card__pic" style="background: url(<%= kid.try(:thumb) %>) no-repeat center; background-size: contain">
+
 
           <!-- card__time -->
           <div class="card__time"><%= kid.get_video_duration %></div>

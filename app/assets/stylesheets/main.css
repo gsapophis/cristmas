@@ -620,7 +620,7 @@ html, body {
 
 
 /* --------------- sign-in --------------- */
-.sign-in {
+header .sign-in {
     font-family: "calibri", Sans-Serif;
     font-size: 16px;
     text-transform: uppercase;
@@ -632,7 +632,7 @@ html, body {
     transition: color 300ms ease-in-out;
     padding-left: 45px;
 }
-.sign-in:before {
+header .sign-in:before {
     position: absolute;
     content: '';
     background: url("sign-in-before.png");
@@ -643,7 +643,7 @@ html, body {
     -webkit-transition: -webkit-transform 300ms ease-in-out;
     transition: transform 300ms ease-in-out;
 }
-.sign-in:after {
+header .sign-in:after {
     position: absolute;
     content: '';
     background: url("sign-in-after.png");
@@ -652,10 +652,10 @@ html, body {
     top: -7px;
     left: 0;
 }
-.sign-in:hover{
+header .sign-in:hover{
     color: rgba(255,255,255,1);
 }
-.sign-in:hover:before{
+header .sign-in:hover:before{
     -webkit-transform: translateX(5px);
     transform: translateX(5px);
 }

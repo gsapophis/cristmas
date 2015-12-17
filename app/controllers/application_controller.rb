@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def redirect_to_back(default = root_path)
-    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-      redirect_to :back
-    else
-      redirect_to default
-    end
+    request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"] ? redirect_to(:back) : redirect_to(default)
+  end
+
+  protected
+  def authenticate_user!
+    user_signed_in? ? super : redirect_to(root_path, notice: 'You are not authorized')
   end
 end

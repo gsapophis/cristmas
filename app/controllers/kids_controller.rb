@@ -1,5 +1,6 @@
 class KidsController < ApplicationController
   respond_to :html, :js
+  before_action :authenticate_user!, except: :show
 
   layout 'personal_page', only: :personal_page
 

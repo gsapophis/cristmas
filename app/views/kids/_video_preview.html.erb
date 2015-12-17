@@ -29,7 +29,7 @@
     <%- if current_user %>
       <%= render 'kids/kids_buttons', :@kid => @kid %>
     <% else %>
-        <%= link_to "ВОЙТИ", user_omniauth_authorize_path(provider: :facebook), class: 'kid__ok sign-in' %>
+        <%= link_to "ВОЙТИ", user_omniauth_authorize_path(provider: :facebook), class: 'sign-in' %>
     <% end %>
   </div>
   <!-- /kid__buttons -->

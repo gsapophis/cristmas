@@ -354,11 +354,11 @@
             _makeFacebook = function(){
                 var links = $( '.kid' ).find( '.share_f' ),
                     data = $( '.kid__share' ).data( "kid"),
-                    picture = '&picture=' + 'http://gooddeal.my-dis.com/assets/baner.jpg',//data.photo,
+                    picture = '&picture=' + 'data.photo', //http://gooddeal.my-dis.com/assets/baner.jpg',
                     name = '&name=' + data.name,
                     link = '&link=' + location.href,
                     description = '&description=' + $('.kid__description').text(),
-                    url = '&redirect_uri=http://www.' + location.host;
+                    url = '&redirect_uri=http://' + location.host;
 
                 url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description + url + picture);
 

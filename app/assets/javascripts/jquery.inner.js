@@ -146,6 +146,7 @@
             _obj = obj,
             _moreForm = _obj.find('.cards__more'),
             _content = _obj.find('ul'),
+            _filterItems = _obj.find('.cards__filter a'),
             _request = new XMLHttpRequest();
 
         //private methods
@@ -208,6 +209,38 @@
                     });
                     //  _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
+                _filterItems.on( {
+                    click: function(){
+                        var curFilter = $( this );
+                        if( !curFilter.hasClass('active') ){
+                            _filterItems.removeClass('active');
+                            curFilter.addClass('active');
+                            _loadFiltered(curFilter.attr('href'));
+                        }
+
+                        return false;
+                    }
+                } );
+            },
+            _loadFiltered = function(url){
+                _request.abort();
+                _request = $.ajax({
+                    url: url,
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                    dataType: 'script',
+                    timeout: 20000,
+                    type: 'GET',
+                    success: function ( msg ) {
+                        _obj.find('.hidden').each( function(i){
+                            _showCard($(this), i+1);
+                        } );
+                    },
+                    error: function (XMLHttpRequest) {
+                        if (XMLHttpRequest.statusText != "abort") {
+
+                        }
+                    }
+                });
             },
             _init = function () {
                 _addEvents();

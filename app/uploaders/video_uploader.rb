@@ -48,9 +48,9 @@ class VideoUploader < CarrierWave::Uploader::Base
 
 
   # watermark: {
-  #     path: File.join(Rails.root, "directory", "file.png"),
-  #     position: :bottom_right, # also: :top_right, :bottom_left, :bottom_right
-  #     pixels_from_edge: 10
+  #     path: File.join(Rails.root, "app/assets/images", "logo.png"),
+  #     position: :top_right#, # also: :top_right, :bottom_left, :bottom_right
+  #     # pixels_from_edge: 10
   # }
   # version :mov do
     # process encode_video: [:mov]

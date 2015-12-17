@@ -40,7 +40,7 @@ class VideoUploader < CarrierWave::Uploader::Base
     orientation = video.rotation
 
     if orientation == 90
-      encode_video(:mp4, custom: "-vf transpose=1")
+      encode_video(:mp4, resolution: "200x300")
     else
       encode_video(:mp4)
     end

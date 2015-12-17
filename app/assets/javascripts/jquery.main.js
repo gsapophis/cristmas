@@ -292,7 +292,6 @@
                   //  _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
                 _window[0].onpopstate = function(){
-                    alert(1)
                     if( location.pathname.indexOf('/kid/') >= 0 ){
                         _openPopupById();
                     }

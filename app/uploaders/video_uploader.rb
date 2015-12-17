@@ -11,7 +11,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   version :share_thumb do
-    process thumbnail: [{format: 'jpg', size: 1200}]
+    process thumbnail: [{format: 'jpg', size: 600}]
     def full_filename for_file
       jpg_name for_file, version_name
     end

@@ -209,6 +209,10 @@
                     });
                     //  _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
+                _addEventsToFilter();
+            },
+            _addEventsToFilter = function(){
+                _filterItems = _obj.find('.cards__filter a');
                 _filterItems.on( {
                     click: function(){
                         var curFilter = $( this );
@@ -234,6 +238,7 @@
                         _obj.find('.hidden').each( function(i){
                             _showCard($(this), i+1);
                         } );
+                        _addEventsToFilter();
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {

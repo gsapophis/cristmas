@@ -3,10 +3,12 @@ class Kid < ActiveRecord::Base
   belongs_to :user
   belongs_to :volonter
 
+  after_create :build_tweet
+
   validates :name, :age, :description, :video, :address, presence: true
 
   scope :not_delivered,   -> ()   { where.not(status: 3) }
-  scope :by_status, -> (status) { where(status: status) if status }
+  scope :by_status, -> (status) { where(status: status) if status.present? }
 
   enum status: [:free, :in_list, :pending_approval, :delivered] unless instance_methods.include? :status
 
@@ -41,6 +43,10 @@ class Kid < ActiveRecord::Base
     Time.at(video_duration.to_i).utc.strftime("%M:%S")
   end
 
+  def share_url
+    Rails.application.routes.url_helpers.kid_url(id).to_s.gsub('kids', 'kid')
+  end
+
   def get_class_kid
     if status == 1
       'card__panding'
@@ -49,7 +55,22 @@ class Kid < ActiveRecord::Base
     end
   end
 
+  def actual_video_url
+    status =='delivered' ? feedback_video.try(:url, 'mp4') : video.try(:url, 'mp4')
+  end
+
+  def actual_thumb_url
+    status =='delivered' ? feedback_video.try(:thumb).try(:url) : video.try(:thumb).try(:url)
+  end
+
   def delivered!(video)
     self.update_attributes(feedback_video: video, status: 3)
+  end
+
+  protected
+  def build_tweet
+    url = "#{share_url}"
+    resp = $twitter_client.update_with_media("#{name}, #{age} #{I18n.t('custom.year', count: age.to_i)} \n\n #{url}", File.new(video.try(:thumb).try(:path)))
+    self.update_columns(tweet_image_url: resp.media.collect(&:media_url).first.to_s)
   end
 end

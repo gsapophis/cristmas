@@ -2,24 +2,12 @@
   <div class="kid__video">
 
     <video controls>
-      <source src=" <%= @kid.status =='delivered' ? @kid.feedback_video.try(:url, 'mp4') : @kid.video.try(:url, 'mp4') %>" type="video/mp4">
+      <source src=" <%= @kid.actual_video_url %>" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
-
-    <!-- kid__share -->
-    <div class="kid__share">
-      <ul>
-        <li><a href="#" class="share_t"></a></li>
-        <li><a href="#" class="share_f"></a></li>
-      </ul>
-    </div>
-    <!-- /kid__share -->
-
-
   </div>
   <!-- /kid__video -->
- <%= social_share_button_tag(@kid.name, :url => "http://myapp.com/foo/bar", :image => "http://foo.bar/images/a.jpg", desc: "The summary of page", via: "MyTwitterName") %>
 
   <!-- kid__info -->
   <div class="kid__info">
@@ -40,8 +28,21 @@
   <div class="kid__buttons">
     <%- if current_user %>
       <%= render 'kids/kids_buttons', :@kid => @kid %>
+    <% else %>
+        <%= link_to "ВОЙТИ", user_omniauth_authorize_path(provider: :facebook), class: 'sign-in' %>
     <% end %>
   </div>
   <!-- /kid__buttons -->
+
+ <!-- kid__share -->
+  <%- unless @notsharable %>
+    <div class="kid__share" data-kid="<%= "{ \"name\": \"#{ @kid.name }\", \"photo\": \"#{@kid.try(:video).try(:share_thumb) }\", \"tweet\": \"#{@kid.tweet_image_url}\"  }" %>">
+  <%- end %>
+   <!--<a href="#" target="_blank" class="share_vk"></a>-->
+   <a href="#" target="_blank" class="share_f"></a>
+   <a href="#" target="_blank" class="share_t"></a>
+
+ </div>
+ <!-- /kid__share -->
 
 </div>

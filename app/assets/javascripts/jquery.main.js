@@ -1,14 +1,25 @@
+
 ( function(){
+    var popup = null;
+
     'use strict';
+
+    if( location.hash == '#_=_'){
+        window.history.back();
+    }
 
     $( function(){
 
         new Page();
 
         $( '.cards').each( function(){
-            new Cards( $(this) );
+             new Cards( $(this) );
         } );
+        $('.popup').each(function(){
 
+            popup = new Popup( $(this) );
+
+        });
 
     } );
 
@@ -60,6 +71,7 @@
                         _checkScroll(1);
                     }
                 });
+
             },
             _addEventsOnLoad = function(){
                 _window.on({
@@ -202,6 +214,7 @@
 
         //public properties
 
+
         //public methods
 
 
@@ -215,6 +228,7 @@
             _obj = obj,
             _moreForm = _obj.find('.cards__more'),
             _content = _obj.find('ul'),
+            _window = $( window ),
             _request = new XMLHttpRequest();
 
         //private methods
@@ -227,8 +241,13 @@
                     }
                 });
                 _obj.on( 'click', '.card', function(){
-                        _loadKid( $(this).data('id'), $(this).data('url') );
+                    _loadKid( $(this).data('id'), $(this).data('url') );
 
+                    window.history.pushState({}, $(this).find('.card__name').text(), $(this).data('url').replace('kids','kid'));
+                } );
+                $('.kid').on( 'click', '.popup__close', function(){
+                    console.log(location.href.substr(0,location.href.indexOf('/kid')));
+                    window.history.pushState({}, 'GoodDeal', location.href.substr(0,location.href.indexOf('/kid')));
                 } );
                 $('.kid').on( 'click', '.kid__ok', function(){
                     var curBtn = $(this);
@@ -272,6 +291,24 @@
                     });
                   //  _loadKid( $(this).data('id'), $(this).data('url') );
                 } );
+                _window[0].onpopstate = function(){
+                    if( location.pathname.indexOf('/kid/') >= 0 ){
+                        _openPopupById();
+                    }
+                };
+                _window.on( {
+                    load: function(){
+                        if( location.pathname.indexOf('/kid/') >= 0 ){
+                            _openPopupById();
+                        }
+
+                    }
+                } );
+
+            },
+            _addSharing = function(){
+                _makeTweeter();
+                _makeFacebook();
             },
             _init = function () {
                 _addEvents();
@@ -303,6 +340,38 @@
                     }
                 });
             },
+            _makeTweeter = function(){
+                var link = $( '.kid' ).find( '.share_t' ),
+                    data = $( '.kid__share' ).data( "kid"),
+                    url = data.name + ". Ты можешь подарить ребенку радость. &amp;image=" +  data.tweet;
+
+                url = ( 'https://twitter.com/intent/tweet?url=' + location.href  + '&amp;text=' + url + '&amp;source=webclient');
+
+                link.attr({
+                    href: url
+                });
+            },
+            _makeFacebook = function(){
+                var links = $( '.kid' ).find( '.share_f' ),
+                    data = $( '.kid__share' ).data( "kid"),
+                    picture = '&picture=' + data.photo, //http://gooddeal.my-dis.com/assets/baner.jpg',
+                    name = '&name=' + data.name,
+                    link = '&link=' + location.href,
+                    description = '&description=' + $('.kid__description').text(),
+                    url = '&redirect_uri=http://' + location.host;
+
+                url = ( 'https://www.facebook.com/dialog/feed?app_id=1518935931767463&display=page' + name + link + description + url + picture);
+
+                links.attr({
+                    href: url
+                });
+            },
+            _openPopupById = function(){
+                var id = location.pathname.substr( location.pathname.lastIndexOf('/') + 1 );
+
+                popup.core.show('card');
+                _loadKid( id, '/kids/' + id );
+            },
             _showCard = function( card, i ){
 
                 setTimeout(function(){
@@ -322,6 +391,8 @@
                     timeout: 20000,
                     type: 'GET',
                     success: function ( msg ) {
+                        popup.core.centerWrap();
+                        _addSharing();
                     },
                     error: function (XMLHttpRequest) {
                         if (XMLHttpRequest.statusText != "abort") {
@@ -339,5 +410,122 @@
         _init();
     };
 
+    var Popup = function( obj ){
+        this.popup = obj;
+        this.btnShow =  $('.popup__open');
+        this.btnClose = obj.find( '.popup__close, .popup__cancel' );
+        this.wrap = obj.find($('.popup__wrap'));
+        this.contents = obj.find($('.popup__content'));
+        this.window = $( window );
+        this.scrollConteiner = $( 'html' );
+        this.timer = setTimeout( function(){},1 );
+
+        this.init();
+    };
+    Popup.prototype = {
+        init: function(){
+            var self = this;
+            self.core = self.core();
+            self.core.build();
+        },
+        core: function (){
+            var self = this;
+
+            return {
+                build: function (){
+                    self.core.controls();
+                },
+                centerWrap: function(){
+                    if ( self.window.height() - 40 - self.wrap.height() > 0 ) {
+                        self.wrap.css({top: ( ( self.window.height() - 40 )- self.wrap.height())/2});
+                    } else {
+                        self.wrap.css({top: 0});
+                    }
+                },
+                controls: function(){
+                    self.window.on( {
+                        resize: function(){
+                            self.core.centerWrap();
+                        }
+                    } );
+                    $('body').on( 'click','.popup__open',  function(){
+                        var curItem = $( this );
+
+                        self.core.show( curItem.attr( 'data-popup' ) );
+                    } );
+                    self.wrap.on( {
+                        click: function( event ){
+                            event = event || window.event;
+
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else {
+                                event.cancelBubble = true;
+                            }
+                        }
+                    } );
+                    self.popup.on( {
+                        click: function(){
+                            self.btnClose.trigger('click');
+                            return false;
+                        }
+                    } );
+                    self.btnClose.on( {
+                        click: function(){
+                            self.core.hide();
+                        }
+                    } );
+                },
+                hide: function(){
+                    self.popup.css ({
+                        'overflow-y': "hidden"
+                    });
+                    self.scrollConteiner.css( {
+                        "overflow-y": "scroll",
+                        paddingRight: 0
+                    } );
+                    self.popup.removeClass('popup_opened');
+                    self.popup.addClass('popup_hide');
+                    location.hash = '';
+                    setTimeout( function(){
+                        self.popup.css ({
+                            'overflow-y': "scroll"
+                        });
+                        self.popup.removeClass('popup_hide');
+                    }, 300 );
+
+                },
+                getScrollWidth: function (){
+                    var scrollDiv = document.createElement("div");
+                    scrollDiv.className = "popup__scrollbar-measure";
+                    document.body.appendChild(scrollDiv);
+
+                    var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+                    document.body.removeChild(scrollDiv);
+
+                    return scrollbarWidth;
+                },
+                show: function( className ){
+                    self.core.setPopupContent( className );
+
+                    self.scrollConteiner.css( {
+                        overflow: "hidden",
+                        paddingRight: self.core.getScrollWidth()
+                    } );
+                    self.popup.addClass('popup_opened');
+                    self.core.centerWrap();
+
+                    $('.popup_opened').find('textarea').focus();
+                },
+                setPopupContent: function( className ){
+                    var curContent = self.contents.filter( '.popup__' + className );
+
+                    self.contents.css( { display: 'none' } );
+                    curContent.css( { display: 'block' } );
+                }
+
+            };
+        }
+    };
 
 } )();

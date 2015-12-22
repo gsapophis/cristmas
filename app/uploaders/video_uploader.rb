@@ -4,21 +4,28 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video::Thumbnailer
 
   version :thumb do
-    process thumbnail: [{format: 'png', size: 317, strip: true}]
+    process thumbnail: [{format: 'jpg', size: 317, strip: true}]
     def full_filename for_file
-      png_name for_file, version_name
+      jpg_name for_file, version_name
     end
   end
 
-  def png_name for_file, version_name
-    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+  version :share_thumb do
+    process thumbnail: [{format: 'jpg', size: 600}]
+    def full_filename for_file
+      jpg_name for_file, version_name
+    end
+  end
+
+  def jpg_name for_file, version_name
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
   end
 
   # process encode_video: [:mp4]
   # process :save_video_duration
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "system/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   process :encode
@@ -33,17 +40,25 @@ class VideoUploader < CarrierWave::Uploader::Base
     orientation = video.rotation
 
     if orientation == 90
-      encode_video(:mp4, custom: "-vf transpose=1")
+      encode_video(:mp4, resolution: "200x300", watermark: {
+          path: File.join(Rails.root, "app/assets/images", "logo_water.png"),
+          position: :top_right#, # also: :top_right, :bottom_left, :bottom_right
+          # pixels_from_edge: 10
+      })
     else
-      encode_video(:mp4)
+      encode_video(:mp4, watermark: {
+          path: File.join(Rails.root, "app/assets/images", "logo_water.png"),
+          position: :top_right#, # also: :top_right, :bottom_left, :bottom_right
+          # pixels_from_edge: 10
+      })
     end
   end
 
 
   # watermark: {
-  #     path: File.join(Rails.root, "directory", "file.png"),
-  #     position: :bottom_right, # also: :top_right, :bottom_left, :bottom_right
-  #     pixels_from_edge: 10
+  #     path: File.join(Rails.root, "app/assets/images", "logo.png"),
+  #     position: :top_right#, # also: :top_right, :bottom_left, :bottom_right
+  #     # pixels_from_edge: 10
   # }
   # version :mov do
     # process encode_video: [:mov]
